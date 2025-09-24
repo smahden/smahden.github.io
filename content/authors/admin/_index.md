@@ -1,16 +1,16 @@
 ---
 # Display name
-title: Alex Johnson
+title: Mahden Saleh
 
 # Name pronunciation (optional)
 name_pronunciation: ''
 
 # Full name (for SEO)
-first_name: Alex
-last_name: Johnson
+first_name: Mahden
+last_name: Saleh
 
 # Pronouns (optional)
-pronouns: he/him
+pronouns: she/her
 
 # Status emoji
 status:
