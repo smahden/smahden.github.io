@@ -1,8 +1,10 @@
 # Mahden Saleh — Software Engineer Portfolio
 
-A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and JavaScript** — no frameworks, no build step, nothing to install. It deploys automatically to **GitHub Pages** on every push.
+A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and JavaScript** — no frameworks, no build step, nothing to install. Served by **GitHub Pages** directly from this repository's `main` branch.
 
-**Live site:** `https://smahden.github.io/portfolio/` *(available after enabling GitHub Pages — see below)*
+**Live site:** https://smahden.github.io/
+
+> This is the deployed copy of [smahden/Portfolio](https://github.com/smahden/Portfolio) — make content edits there (or here, and mirror them) so the two stay in sync.
 
 ## Features
 
