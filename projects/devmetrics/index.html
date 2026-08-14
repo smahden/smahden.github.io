@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevMetrics</title>
+  <meta name="description" content="DevMetrics — instant analytics for any public GitHub repository." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <h1>📈 DevMetrics</h1>
+    <p>Instant analytics for any public GitHub repository — commit cadence, languages, and contributor load. No sign-in, no tracking, charts drawn in hand-rolled SVG.</p>
+    <form id="repo-form">
+      <input
+        id="repo-input"
+        type="text"
+        placeholder="owner/repo — try facebook/react"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Repository in owner/repo format"
+        required
+        pattern="\s*[\w.-]+\/[\w.-]+\s*"
+        title="Format: owner/repo"
+      />
+      <button type="submit">Analyze</button>
+    </form>
+    <p id="status" role="status" hidden></p>
+  </header>
+
+  <main id="dashboard" hidden>
+    <section class="repo-card">
+      <div>
+        <h2 id="repo-name"></h2>
+        <p id="repo-desc"></p>
+      </div>
+      <dl class="stat-tiles">
+        <div class="tile"><dt>Stars</dt><dd id="stat-stars"></dd></div>
+        <div class="tile"><dt>Forks</dt><dd id="stat-forks"></dd></div>
+        <div class="tile"><dt>Open issues</dt><dd id="stat-issues"></dd></div>
+        <div class="tile"><dt>Last push</dt><dd id="stat-pushed"></dd></div>
+      </dl>
+    </section>
+
+    <div class="charts">
+      <section class="chart-card wide">
+        <h3>Commits per week <span class="hint">last 52 weeks</span></h3>
+        <div id="chart-commits" class="chart"></div>
+      </section>
+      <section class="chart-card">
+        <h3>Languages <span class="hint">by bytes of code</span></h3>
+        <div id="chart-languages" class="chart"></div>
+      </section>
+      <section class="chart-card">
+        <h3>Top contributors <span class="hint">by commit count</span></h3>
+        <div id="chart-contributors" class="chart"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Built by Mahden Saleh · Uses the public GitHub REST API (60 requests/hour unauthenticated)</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
