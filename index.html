@@ -4,319 +4,406 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mahden Saleh — Software Engineer</title>
-  <meta name="description" content="Mahden Saleh is a full-stack software engineer in Kansas City, MO. Computer Science graduate experienced with React, PHP, MySQL, RESTful APIs, and AI-driven recommendation systems." />
+  <meta name="description" content="Mahden Saleh is a full-stack software engineer in Kansas City, MO. Computer Science graduate experienced with React, PHP, Node.js, Python, MySQL, RESTful APIs, and AI-driven recommendation systems." />
   <meta name="author" content="Mahden Saleh" />
   <meta property="og:title" content="Mahden Saleh — Software Engineer" />
   <meta property="og:description" content="Full-stack software engineer building responsive web applications end-to-end — from database schema to user interface." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://smahden.github.io/" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%236366f1'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Segoe UI,Arial,sans-serif' font-weight='700' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ============ NAV ============ -->
-  <header class="nav">
+  <header class="nav" id="top">
     <div class="nav-inner">
-      <a href="#top" class="nav-logo">Mahden<span class="accent">.</span></a>
+      <a href="#top" class="logo"><span class="logo-mark">&lt;/&gt;</span> mahden.saleh</a>
       <nav aria-label="Primary">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
-          <span></span><span></span><span></span>
-        </button>
-        <ul id="nav-menu" class="nav-menu">
+        <ul class="nav-links">
           <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#experience">Experience</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#certifications">Certifications</a></li>
-          <li><a href="cv.pdf" class="btn btn-small" download>Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button id="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
   <main id="main">
-
     <!-- ============ HERO ============ -->
-    <section class="hero" id="top">
-      <div class="container">
-        <p class="hero-eyebrow reveal">Kansas City, Missouri</p>
-        <h1 class="reveal">Mahden Saleh</h1>
-        <p class="hero-role reveal">Full-Stack Software Engineer</p>
-        <p class="hero-lead reveal">
-          I design, build, and ship responsive web applications end-to-end — from database
-          schema to user interface. I've delivered a full-stack adaptive learning platform
-          powered by content-based filtering and an internal employee-management system,
-          and I'm looking for front-end, back-end, full-stack, or AI-focused engineering roles.
-        </p>
-        <div class="hero-cta reveal">
-          <a href="#projects" class="btn btn-primary">View My Projects</a>
-          <a href="cv.pdf" class="btn btn-outline" download>Download Resume</a>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Kansas City, Missouri</p>
+          <h1>Mahden Saleh.</h1>
+          <h2 class="hero-sub">I build software that <span class="accent" id="typed">ships.</span><span class="cursor" aria-hidden="true">|</span></h2>
+          <p class="hero-lede">
+            I'm a full-stack software engineer who designs, builds, and ships
+            responsive web applications end-to-end — from database schema to user
+            interface. I've delivered an adaptive learning platform powered by
+            content-based filtering, and I'm looking for front-end, back-end,
+            full-stack, or AI-focused engineering roles.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">View my work</a>
+            <a class="btn btn-ghost" href="cv.pdf" download>Download résumé</a>
+          </div>
+          <ul class="hero-social" aria-label="Social links">
+            <li><a href="https://github.com/smahden" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.4 4.6 18.4 5 18.4 5c.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            </a></li>
+            <li><a href="https://www.linkedin.com/in/mahden" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.2 2.4 4.2 5.4v6.3zM5.3 7.4a2 2 0 1 1 0-4.1 2 2 0 0 1 0 4.1zm1.8 13H3.6V9h3.5v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 1 .8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-1-.8-1.7-1.8-1.7z"/></svg>
+            </a></li>
+            <li><a href="mailto:msmahden@gmail.com" aria-label="Email">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a></li>
+          </ul>
         </div>
-        <ul class="hero-links reveal" aria-label="Social links">
-          <li>
-            <a href="https://github.com/smahden" target="_blank" rel="noopener" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 2.87-.39c.97 0 1.95.13 2.87.39 2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.77-.01 3.15 0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
-              <span>GitHub</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/mahden" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:msmahden@gmail.com" aria-label="Email">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-              <span>Email</span>
-            </a>
-          </li>
-        </ul>
+        <div class="hero-card" aria-hidden="true">
+          <div class="code-window">
+            <div class="code-titlebar"><span></span><span></span><span></span><em>engineer.js</em></div>
+<pre><code><span class="tok-kw">const</span> <span class="tok-var">mahden</span> = {
+  <span class="tok-prop">role</span>: <span class="tok-str">'Software Engineer'</span>,
+  <span class="tok-prop">focus</span>: [<span class="tok-str">'Web'</span>, <span class="tok-str">'APIs'</span>, <span class="tok-str">'Cloud'</span>],
+  <span class="tok-prop">values</span>: [<span class="tok-str">'clean code'</span>, <span class="tok-str">'testing'</span>],
+  <span class="tok-prop">learning</span>: <span class="tok-str">'always'</span>,
+  <span class="tok-fn">hireable</span>() {
+    <span class="tok-kw">return</span> <span class="tok-bool">true</span>;
+  }
+};</code></pre>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
+    <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title reveal"><span class="accent">01.</span> About Me</h2>
-        <div class="about-grid reveal">
+        <h2 class="section-title"><span class="section-num">01.</span> About Me</h2>
+        <div class="about-grid">
           <div class="about-text">
             <p>
-              I'm a Computer Science graduate from the University of the East and a full-stack
-              developer who enjoys owning features across the whole stack — designing the data
-              model, building the API, and crafting the interface people actually use.
+              I'm a Computer Science graduate from the University of the East and a
+              full-stack developer who enjoys owning features across the whole stack —
+              designing the data model, building the API, and crafting the interface
+              people actually use.
             </p>
             <p>
-              For my thesis I built <strong>IDA</strong>, an adaptive Grade&nbsp;4 mathematics
-              platform that personalizes learning paths with content-based filtering. As a
-              software engineering intern at ToonCity, I developed an internal
-              employee-management system with PHP, Sass, and MySQL. Alongside my technical
-              work, two years supervising a store team taught me how to lead, delegate, and
-              stay calm under pressure.
+              For my thesis I built <strong>IDA</strong>, an adaptive Grade&nbsp;4
+              mathematics platform that personalizes learning paths with content-based
+              filtering. As a software engineering intern at ToonCity, I developed an
+              internal employee-management system with PHP, Sass, and MySQL. Alongside
+              my technical work, two years supervising a store team taught me how to
+              lead, delegate, and stay calm under pressure.
             </p>
             <p>
-              I work user-first and Agile, and I'm especially interested in roles where I can
-              combine solid engineering with applied AI — recommendation systems, adaptive
-              experiences, and data-driven products.
+              I work user-first and Agile, and I'm especially interested in roles where
+              I can combine solid engineering with applied AI — recommendation systems,
+              adaptive experiences, and data-driven products.
             </p>
-          </div>
-          <aside class="about-facts" aria-label="Quick facts">
-            <h3>Quick Facts</h3>
-            <ul>
-              <li><span>Focus</span>Front-End · Back-End · Full-Stack · AI</li>
-              <li><span>Degree</span>B.S. Computer Science</li>
-              <li><span>Location</span>Kansas City, MO</li>
-              <li><span>Certified</span>Azure · Google PM · HTML &amp; CSS</li>
+            <p>Technologies I've been working with recently:</p>
+            <ul class="tech-list">
+              <li>JavaScript &amp; Python</li>
+              <li>React (Vite) &amp; Sass</li>
+              <li>Node.js &amp; Express</li>
+              <li>PHP &amp; FastAPI</li>
+              <li>MySQL &amp; SQLite</li>
+              <li>Git &amp; GitHub Actions</li>
             </ul>
+          </div>
+          <aside class="about-facts">
+            <div class="fact-card">
+              <h3>Quick facts</h3>
+              <ul>
+                <li><strong>Location:</strong> Kansas City, MO</li>
+                <li><strong>Focus:</strong> Front-End · Back-End · Full-Stack · AI</li>
+                <li><strong>Degree:</strong> B.S. Computer Science</li>
+                <li><strong>Certified:</strong> Azure · Google PM · HTML &amp; CSS</li>
+                <li><strong>Email:</strong> <a href="mailto:msmahden@gmail.com">msmahden@gmail.com</a></li>
+              </ul>
+            </div>
           </aside>
         </div>
       </div>
     </section>
 
-    <!-- ============ PROJECTS ============ -->
-    <section class="section" id="projects">
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="section section-alt">
       <div class="container">
-        <h2 class="section-title reveal"><span class="accent">02.</span> Projects</h2>
-
-        <article class="project featured reveal">
-          <div class="project-body">
-            <p class="project-kicker">Featured · Thesis Project</p>
-            <h3>IDA — Adaptive Grade 4 Mathematics Software</h3>
-            <p class="project-desc">
-              A full-stack adaptive learning platform that teaches Order of Operations
-              (PEMDAS) to Grade 4 students. IDA assesses each student's performance and uses
-              content-based filtering to generate personalized learning paths that target
-              their weak areas.
-            </p>
-            <ul class="project-points">
-              <li>Engineered personalized learning paths with content-based filtering algorithms — an applied recommendation system.</li>
-              <li>Created UI/UX wireframes and interactive prototypes in Figma before development.</li>
-              <li>Built the front end as a component-based React (Vite) single-page application styled with Sass.</li>
-              <li>Deployed as a live web application where students track progress and see areas for improvement.</li>
-            </ul>
-            <ul class="tags" aria-label="Technologies used">
-              <li>React (Vite)</li><li>Sass</li><li>PHP</li><li>MySQL</li><li>Content-Based Filtering</li><li>Figma</li>
+        <h2 class="section-title"><span class="section-num">02.</span> Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">💬</div>
+            <h3>Languages</h3>
+            <ul class="chips">
+              <li>JavaScript</li><li>Python</li><li>Java</li><li>C</li><li>C++</li>
+              <li>C#</li><li>PHP</li><li>R</li><li>SQL</li><li>HTML5</li><li>CSS3</li>
             </ul>
           </div>
-        </article>
+          <div class="skill-card">
+            <div class="skill-icon">⚛️</div>
+            <h3>Front End</h3>
+            <ul class="chips">
+              <li>React</li><li>Vite</li><li>Sass</li><li>Responsive Design</li>
+              <li>Single-Page Apps</li><li>Component-Based UI</li><li>Figma</li>
+              <li>Accessibility</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🛠️</div>
+            <h3>Back End &amp; APIs</h3>
+            <ul class="chips">
+              <li>Node.js</li><li>Express</li><li>FastAPI</li><li>PHP</li>
+              <li>RESTful APIs</li><li>CRUD</li><li>JWT Auth</li><li>Data Validation</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🗄️</div>
+            <h3>Databases</h3>
+            <ul class="chips">
+              <li>MySQL</li><li>SQLite</li><li>SQLAlchemy</li><li>Relational DB Design</li>
+              <li>Schema Design</li><li>Query Optimization</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🤖</div>
+            <h3>AI &amp; CS Foundations</h3>
+            <ul class="chips">
+              <li>Artificial Intelligence</li><li>Content-Based Filtering</li>
+              <li>Recommendation Systems</li><li>Data Analytics</li>
+              <li>Data Structures &amp; Algorithms</li><li>OOP</li><li>MVC</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">☁️</div>
+            <h3>Cloud, Tools &amp; Testing</h3>
+            <ul class="chips">
+              <li>Microsoft Azure</li><li>Git &amp; GitHub</li><li>GitHub Actions (CI)</li>
+              <li>Jest</li><li>Pytest</li><li>VS Code</li><li>Agile / SDLC</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="project-grid">
-          <article class="project card reveal">
-            <h3>Employee Management System</h3>
-            <p class="project-kicker">ToonCity Internship</p>
-            <p class="project-desc">
-              Internal web application that centralizes employee records and streamlines
-              operations. Implemented RESTful CRUD endpoints with server-side validation and
-              designed an optimized relational database schema for reliable data retrieval.
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title"><span class="section-num">03.</span> Featured Projects</h2>
+        <div class="projects-grid">
+
+          <article class="project-card">
+            <header class="project-head">
+              <span class="project-kicker">Featured · Thesis Project</span>
+            </header>
+            <h3>IDA — Adaptive Grade 4 Mathematics Software</h3>
+            <p>
+              A full-stack adaptive learning platform that teaches Order of Operations
+              (PEMDAS) to Grade 4 students. IDA assesses each student's performance and
+              uses content-based filtering — an applied recommendation system — to
+              generate personalized learning paths that target their weak areas.
+              Designed in Figma, built as a component-based React (Vite) SPA, and
+              deployed as a live web application where students track their progress.
             </p>
-            <ul class="tags" aria-label="Technologies used">
+            <ul class="chips project-tech">
+              <li>React (Vite)</li><li>Sass</li><li>PHP</li><li>MySQL</li><li>Content-Based Filtering</li><li>Figma</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <header class="project-head">
+              <span class="project-kicker">ToonCity Internship</span>
+            </header>
+            <h3>Employee Management System</h3>
+            <p>
+              Internal web application that centralizes employee records and streamlines
+              operations. Implemented RESTful CRUD endpoints with server-side validation
+              and form handling, and designed an optimized relational database schema
+              with efficient queries and table relationships for reliable data retrieval.
+            </p>
+            <ul class="chips project-tech">
               <li>PHP</li><li>MySQL</li><li>Sass</li><li>REST APIs</li>
             </ul>
           </article>
 
-          <article class="project card reveal">
-            <h3>Portfolio Website</h3>
-            <p class="project-kicker">Personal Project</p>
-            <p class="project-desc">
-              This site — a fast, responsive, accessible single-page portfolio hand-built with
-              semantic HTML, modern CSS, and vanilla JavaScript, deployed with GitHub Pages.
-              No frameworks, no build step.
+          <article class="project-card">
+            <a class="project-shot" href="https://github.com/smahden/portfolio/tree/main/projects/taskflow" target="_blank" rel="noopener" tabindex="-1">
+              <img src="projects/taskflow/docs/screenshot.png" alt="TaskFlow Kanban board with To Do, In Progress and Done columns" loading="lazy" />
+            </a>
+            <header class="project-head">
+              <span class="project-links">
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/taskflow" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+              </span>
+            </header>
+            <h3>TaskFlow — Kanban Task Manager</h3>
+            <p>
+              A full-stack Kanban board with native drag-and-drop, JWT
+              authentication, and per-user boards, columns, and cards. The Express
+              API renumbers card positions transactionally on every move, and 22
+              Jest + Supertest tests cover auth, ownership, and movement edge cases.
             </p>
-            <ul class="tags" aria-label="Technologies used">
+            <ul class="chips project-tech">
+              <li>Node.js</li><li>Express</li><li>SQLite</li><li>JWT</li><li>Jest</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <a class="project-shot" href="https://github.com/smahden/portfolio/tree/main/projects/shoplite" target="_blank" rel="noopener" tabindex="-1">
+              <img src="projects/shoplite/docs/screenshot.png" alt="ShopLite interactive OpenAPI documentation listing auth and product endpoints" loading="lazy" />
+            </a>
+            <header class="project-head">
+              <span class="project-links">
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/shoplite" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+              </span>
+            </header>
+            <h3>ShopLite — E-commerce API</h3>
+            <p>
+              A production-style e-commerce backend: searchable product catalog,
+              per-user carts with stock control, and checkout that snapshots prices
+              into immutable order history. Money is stored as integer cents, and
+              22 pytest tests cover auth, permissions, stock limits, and privacy.
+            </p>
+            <ul class="chips project-tech">
+              <li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>SQLite</li><li>Pytest</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <a class="project-shot" href="projects/devmetrics/?repo=facebook/react" target="_blank" rel="noopener" tabindex="-1">
+              <img src="projects/devmetrics/docs/screenshot.png" alt="DevMetrics dashboard showing stars, forks and a weekly commit chart for facebook/react" loading="lazy" />
+            </a>
+            <header class="project-head">
+              <span class="project-links">
+                <a href="projects/devmetrics/?repo=facebook/react" target="_blank" rel="noopener" aria-label="Live demo">Live ↗</a>
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/devmetrics" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+              </span>
+            </header>
+            <h3>DevMetrics — GitHub Analytics Dashboard</h3>
+            <p>
+              Instant analytics for any public GitHub repository — weekly commit
+              cadence, language share, and contributor load — with every chart
+              hand-rolled in SVG, zero dependencies. Handles the GitHub stats API's
+              202-and-retry dance, rate limits, and shareable deep links.
+            </p>
+            <ul class="chips project-tech">
+              <li>JavaScript</li><li>SVG</li><li>GitHub API</li><li>GitHub Pages</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <a class="project-shot" href="https://github.com/smahden/portfolio" target="_blank" rel="noopener" tabindex="-1">
+              <img src="assets/portfolio-screenshot.png" alt="This portfolio's landing page in dark mode" loading="lazy" />
+            </a>
+            <header class="project-head">
+              <span class="project-links">
+                <a href="https://github.com/smahden/portfolio" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+              </span>
+            </header>
+            <h3>This Portfolio Site</h3>
+            <p>
+              The site you're looking at — hand-built with semantic HTML, modern CSS
+              (custom properties, grid, prefers-color-scheme), and dependency-free
+              vanilla JavaScript. Fully responsive, keyboard-accessible, dark/light
+              themed, and deployed automatically to GitHub Pages on every push.
+            </p>
+            <ul class="chips project-tech">
               <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>GitHub Pages</li>
             </ul>
           </article>
-        </div>
 
-        <p class="section-foot reveal">
-          More on <a href="https://github.com/smahden" target="_blank" rel="noopener">github.com/smahden</a>
+        </div>
+        <p class="projects-more">
+          More on <a href="https://github.com/smahden" target="_blank" rel="noopener">github.com/smahden ↗</a>
         </p>
       </div>
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
-    <section class="section" id="experience">
+    <section id="experience" class="section section-alt">
       <div class="container">
-        <h2 class="section-title reveal"><span class="accent">03.</span> Experience</h2>
-        <div class="timeline">
-
-          <div class="timeline-item reveal">
+        <h2 class="section-title"><span class="section-num">04.</span> Experience &amp; Education</h2>
+        <ol class="timeline">
+          <li class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <h3>Software Engineer Intern <span class="at">· ToonCity</span></h3>
-              <p class="timeline-date">May 2024 — July 2024</p>
+            <div class="timeline-body">
+              <h3>Software Engineer Intern <span class="tl-at">· ToonCity</span></h3>
+              <p class="tl-date">May 2024 — July 2024</p>
               <ul>
                 <li>Developed an internal employee-management web application using PHP, Sass, and MySQL to centralize records and streamline operations.</li>
                 <li>Implemented RESTful CRUD operations with server-side validation and form handling for employee records.</li>
                 <li>Designed and optimized relational database schemas, queries, and table relationships for efficient, reliable data retrieval.</li>
                 <li>Integrated front-end and back-end components for dynamic content rendering and a responsive user experience.</li>
               </ul>
-              <ul class="tags" aria-label="Technologies used">
-                <li>PHP</li><li>Sass</li><li>MySQL</li><li>REST APIs</li>
-              </ul>
             </div>
-          </div>
-
-          <div class="timeline-item reveal">
+          </li>
+          <li class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <h3>Fashion Team Associate <span class="at">· Walmart, Kansas City, MO</span></h3>
-              <p class="timeline-date">August 2025 — Present</p>
+            <div class="timeline-body">
+              <h3>Fashion Team Associate <span class="tl-at">· Walmart, Kansas City, MO</span></h3>
+              <p class="tl-date">August 2025 — Present</p>
               <ul>
                 <li>Support merchandising, inventory organization, and customer service in a fast-paced, high-volume retail environment while pursuing software engineering roles.</li>
               </ul>
             </div>
-          </div>
-
-          <div class="timeline-item reveal">
+          </li>
+          <li class="timeline-item">
             <div class="timeline-dot" aria-hidden="true"></div>
-            <div class="timeline-content">
-              <h3>Supervisor <span class="at">· QuikMart</span></h3>
-              <p class="timeline-date">April 2023 — May 2025</p>
+            <div class="timeline-body">
+              <h3>Supervisor <span class="tl-at">· QuikMart</span></h3>
+              <p class="tl-date">April 2023 — May 2025</p>
               <ul>
                 <li>Supervised daily store operations and a team of associates — scheduling, task delegation, and floor coverage.</li>
                 <li>Managed customer service, cash handling, and inventory while enforcing store policies and loss-prevention standards.</li>
               </ul>
             </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SKILLS ============ -->
-    <section class="section" id="skills">
-      <div class="container">
-        <h2 class="section-title reveal"><span class="accent">04.</span> Technical Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-group reveal">
-            <h3>Languages</h3>
-            <ul class="tags">
-              <li>JavaScript</li><li>Python</li><li>Java</li><li>C</li><li>C++</li><li>C#</li><li>PHP</li><li>R</li><li>SQL</li><li>HTML5</li><li>CSS3</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Front-End</h3>
-            <ul class="tags">
-              <li>React</li><li>Vite</li><li>Sass</li><li>Responsive Design</li><li>Single-Page Apps</li><li>Component-Based UI</li><li>Figma</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Back-End &amp; APIs</h3>
-            <ul class="tags">
-              <li>RESTful APIs</li><li>CRUD Operations</li><li>JSON</li><li>Server-Side Scripting</li><li>Form Handling</li><li>Data Validation</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Databases</h3>
-            <ul class="tags">
-              <li>MySQL</li><li>Relational DB Design</li><li>Schema Design</li><li>Data Modeling</li><li>Query Optimization</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3>AI &amp; CS Foundations</h3>
-            <ul class="tags">
-              <li>Artificial Intelligence</li><li>Content-Based Filtering</li><li>Recommendation Systems</li><li>Data Analytics</li><li>Data Structures &amp; Algorithms</li><li>OOP</li><li>MVC</li><li>Design Patterns</li>
-            </ul>
-          </div>
-          <div class="skill-group reveal">
-            <h3>Cloud &amp; Tools</h3>
-            <ul class="tags">
-              <li>Microsoft Azure</li><li>Git</li><li>GitHub</li><li>GitHub Pages</li><li>VS Code</li><li>IntelliJ IDEA</li><li>Eclipse</li><li>Agile / SDLC</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ EDUCATION ============ -->
-    <section class="section" id="education">
-      <div class="container">
-        <h2 class="section-title reveal"><span class="accent">05.</span> Education</h2>
-        <div class="edu-card reveal">
-          <div class="edu-icon" aria-hidden="true">🎓</div>
-          <div>
-            <h3>Bachelor of Science in Computer Science</h3>
-            <p class="edu-school">University of the East — Manila, Philippines</p>
-            <p class="edu-detail">
-              <strong>Relevant coursework:</strong> Data Structures, Automata Theory,
-              Artificial Intelligence, Data Analytics, Software Engineering.
-            </p>
-            <p class="edu-detail">
-              <strong>Thesis:</strong> IDA — a full-stack adaptive learning platform for
-              Grade&nbsp;4 mathematics using content-based filtering
-              (<a href="#projects">see Projects</a>).
-            </p>
-          </div>
-        </div>
+          </li>
+          <li class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="timeline-body">
+              <h3>B.S. in Computer Science <span class="tl-at">· University of the East, Manila</span></h3>
+              <p class="tl-date">Graduate</p>
+              <ul>
+                <li>Relevant coursework: Data Structures, Automata Theory, Artificial Intelligence, Data Analytics, Software Engineering.</li>
+                <li>Thesis: IDA — a full-stack adaptive learning platform for Grade 4 mathematics using content-based filtering (see Projects).</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- ============ CERTIFICATIONS ============ -->
-    <section class="section" id="certifications">
+    <section id="certifications" class="section">
       <div class="container">
-        <h2 class="section-title reveal"><span class="accent">06.</span> Certifications</h2>
+        <h2 class="section-title"><span class="section-num">05.</span> Certifications</h2>
         <div class="cert-grid">
-          <div class="cert-card reveal">
+          <div class="cert-card">
             <div class="cert-icon" aria-hidden="true">☁️</div>
             <h3>Microsoft Azure Fundamentals</h3>
             <p class="cert-issuer">Microsoft</p>
             <p class="cert-id">Credential ID: 33B54C79259F3595</p>
           </div>
-          <div class="cert-card reveal">
+          <div class="cert-card">
             <div class="cert-icon" aria-hidden="true">📋</div>
             <h3>Foundations of Project Management</h3>
             <p class="cert-issuer">Google</p>
             <p class="cert-id">Credential ID: EUM4UPIIPV8D</p>
           </div>
-          <div class="cert-card reveal">
+          <div class="cert-card">
             <div class="cert-icon" aria-hidden="true">📜</div>
             <h3>IT Specialist: HTML &amp; CSS</h3>
             <p class="cert-issuer">Certiport</p>
@@ -327,35 +414,23 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section contact" id="contact">
-      <div class="container">
-        <h2 class="section-title reveal"><span class="accent">07.</span> Get In Touch</h2>
-        <p class="contact-lead reveal">
-          I'm actively seeking software engineering opportunities — front-end, back-end,
-          full-stack, or AI. If you think I'd be a good fit for your team, my inbox is open.
+    <section id="contact" class="section contact section-alt">
+      <div class="container contact-inner">
+        <h2 class="section-title centered"><span class="section-num">06.</span> Get In Touch</h2>
+        <p class="contact-lede">
+          I'm actively seeking software engineering opportunities — front-end,
+          back-end, full-stack, or AI. If you think I'd be a good fit for your team,
+          my inbox is open, and I'll get back to you.
         </p>
-        <div class="hero-cta reveal">
-          <a href="mailto:msmahden@gmail.com" class="btn btn-primary">Say Hello</a>
-          <a href="https://www.linkedin.com/in/mahden" target="_blank" rel="noopener" class="btn btn-outline">Connect on LinkedIn</a>
-        </div>
+        <a class="btn btn-primary btn-lg" href="mailto:msmahden@gmail.com">Say hello 👋</a>
       </div>
     </section>
-
   </main>
 
-  <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <div class="container footer-inner">
-      <p>© <span id="year">2026</span> Mahden Saleh · Built with plain HTML, CSS &amp; JavaScript</p>
-      <ul class="footer-links">
-        <li><a href="https://github.com/smahden" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/mahden" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="mailto:msmahden@gmail.com">Email</a></li>
-        <li><a href="cv.pdf" download>Resume</a></li>
-      </ul>
-    </div>
+    <p>Designed &amp; built by Mahden Saleh · <a href="https://github.com/smahden/portfolio" target="_blank" rel="noopener">View source ↗</a></p>
   </footer>
 
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

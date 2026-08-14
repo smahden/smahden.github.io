@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow</title>
+  <meta name="description" content="TaskFlow — a Kanban task manager." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>📋 TaskFlow</h1>
+    <div id="user-area" hidden>
+      <span id="user-name"></span>
+      <button id="logout-btn" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <!-- Auth view -->
+  <main id="auth-view" class="auth-view" hidden>
+    <form id="auth-form" class="auth-card">
+      <h2 id="auth-title">Welcome back</h2>
+      <p id="auth-error" class="error" role="alert" hidden></p>
+      <label id="name-field" hidden>
+        Name
+        <input type="text" id="name" autocomplete="name" />
+      </label>
+      <label>
+        Email
+        <input type="email" id="email" autocomplete="email" required />
+      </label>
+      <label>
+        Password
+        <input type="password" id="password" autocomplete="current-password" minlength="8" required />
+      </label>
+      <button type="submit" class="btn btn-primary" id="auth-submit">Log in</button>
+      <p class="auth-switch">
+        <span id="auth-switch-text">New here?</span>
+        <button type="button" class="linklike" id="auth-switch-btn">Create an account</button>
+      </p>
+    </form>
+  </main>
+
+  <!-- Boards list view -->
+  <main id="boards-view" hidden>
+    <div class="boards-head">
+      <h2>Your boards</h2>
+      <form id="new-board-form" class="inline-form">
+        <input type="text" id="new-board-title" placeholder="New board name…" required />
+        <button class="btn btn-primary">Create</button>
+      </form>
+    </div>
+    <ul id="boards-list" class="boards-list"></ul>
+  </main>
+
+  <!-- Single board view -->
+  <main id="board-view" hidden>
+    <div class="board-head">
+      <button id="back-btn" class="btn btn-ghost">← Boards</button>
+      <h2 id="board-title"></h2>
+      <form id="new-column-form" class="inline-form">
+        <input type="text" id="new-column-title" placeholder="New column…" required />
+        <button class="btn btn-ghost">Add column</button>
+      </form>
+    </div>
+    <div id="columns" class="columns"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
