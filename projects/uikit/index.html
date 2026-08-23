@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UIKit — Accessible Components</title>
+  <meta name="description" content="A dependency-free library of accessible UI components: modal, tabs, accordion, combobox, toasts, and form validation." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>" />
+  <link rel="stylesheet" href="src/uikit.css" />
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body class="uikit">
+  <header class="masthead">
+    <div class="masthead-top">
+      <h1>🧩 UIKit</h1>
+      <button id="theme" class="uikit-btn uikit-btn--ghost" data-uikit="theme" aria-pressed="false">
+        Dark mode
+      </button>
+    </div>
+    <p>
+      Accessible UI components in plain JavaScript — no framework, no build step,
+      no dependencies. Every component below is fully keyboard-operable and
+      announces its state to assistive technology. <strong>Try it with Tab and the arrow keys.</strong>
+    </p>
+  </header>
+
+  <main>
+    <section class="demo">
+      <h2>Tabs</h2>
+      <p class="demo-note">Arrow keys move between tabs, Home and End jump to the ends, and roving <code>tabindex</code> means one Tab press leaves the whole tablist.</p>
+      <div data-uikit="tabs" id="tabs-demo">
+        <div class="uikit-tabs-list">
+          <button class="uikit-tab" data-uikit-tab="selected">Overview</button>
+          <button class="uikit-tab" data-uikit-tab>Keyboard</button>
+          <button class="uikit-tab" data-uikit-tab>Screen readers</button>
+        </div>
+        <div class="uikit-panel" data-uikit-panel>
+          <p>Seven components, about 400 lines of JavaScript, and zero runtime dependencies. Components initialize themselves from <code>data-uikit</code> attributes.</p>
+        </div>
+        <div class="uikit-panel" data-uikit-panel>
+          <p>Nothing here needs a mouse: the modal traps and restores focus, the combobox is driven by arrow keys, and every interactive element keeps a visible focus ring.</p>
+        </div>
+        <div class="uikit-panel" data-uikit-panel>
+          <p>State is carried by ARIA attributes — <code>aria-selected</code>, <code>aria-expanded</code>, <code>aria-invalid</code>, <code>aria-activedescendant</code> — so the component tells assistive tech what it is doing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo">
+      <h2>Modal dialog</h2>
+      <p class="demo-note">Opens with focus moved inside, traps Tab at both ends, closes on Escape or backdrop click, and returns focus to the button that opened it.</p>
+      <button class="uikit-btn" data-uikit-open="confirm-modal">Delete account…</button>
+
+      <div class="uikit-modal" data-uikit="modal" id="confirm-modal" aria-labelledby="confirm-title">
+        <div class="uikit-modal-box">
+          <h2 id="confirm-title">Delete this account?</h2>
+          <p>This is a demo — nothing will actually happen. Press Escape, or Tab around and notice that focus never leaves this dialog.</p>
+          <div class="uikit-modal-actions">
+            <button class="uikit-btn uikit-btn--ghost" data-uikit-close>Cancel</button>
+            <button class="uikit-btn" id="confirm-delete" data-uikit-close>Yes, delete</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo">
+      <h2>Accordion</h2>
+      <p class="demo-note">Each trigger is a real button carrying <code>aria-expanded</code>, and its panel is a labelled region.</p>
+      <div class="uikit-accordion" data-uikit="accordion" data-uikit-single="true" id="accordion-demo">
+        <div class="uikit-accordion-item" data-uikit-accordion-item>
+          <button class="uikit-accordion-trigger" data-uikit-accordion-trigger>Why no framework?</button>
+          <div class="uikit-accordion-panel" data-uikit-accordion-panel>
+            <p>Accessibility lives in the DOM and the keyboard model, not in a framework. Building these by hand means understanding focus order, ARIA state, and event handling directly — which transfers to React or anything else.</p>
+          </div>
+        </div>
+        <div class="uikit-accordion-item" data-uikit-accordion-item>
+          <button class="uikit-accordion-trigger" data-uikit-accordion-trigger>How is it tested?</button>
+          <div class="uikit-accordion-panel" data-uikit-accordion-panel>
+            <p>A Playwright suite drives this page with real key presses and asserts focus position and ARIA state after each one — the behaviour a screen reader would report.</p>
+          </div>
+        </div>
+        <div class="uikit-accordion-item" data-uikit-accordion-item>
+          <button class="uikit-accordion-trigger" data-uikit-accordion-trigger>Can I theme it?</button>
+          <div class="uikit-accordion-panel" data-uikit-accordion-panel>
+            <p>Every color is a custom property. Override the <code>--uikit-*</code> variables, or flip <code>data-theme</code> like the toggle at the top of this page does.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo">
+      <h2>Combobox</h2>
+      <p class="demo-note">Type to filter, arrow keys to highlight, Enter to select, Escape to close. Focus stays in the input; <code>aria-activedescendant</code> points at the highlighted option.</p>
+      <div class="uikit-combobox" data-uikit="combobox" id="combobox-demo">
+        <label class="uikit-visually-hidden" for="framework">Choose a technology</label>
+        <input class="uikit-input" id="framework" type="text" placeholder="Choose a technology…" />
+        <ul class="uikit-listbox" data-uikit-listbox>
+          <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>Python</li>
+          <li>React</li>
+          <li>Node.js</li>
+          <li>FastAPI</li>
+          <li>PostgreSQL</li>
+          <li>SQLite</li>
+          <li>Docker</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="demo">
+      <h2>Form validation</h2>
+      <p class="demo-note">Errors are announced through <code>aria-describedby</code>, fields get <code>aria-invalid</code>, and submitting an invalid form moves focus to the first problem.</p>
+      <form data-uikit="form" id="signup" novalidate>
+        <div class="uikit-field">
+          <label for="name">Name</label>
+          <input class="uikit-input" id="name" type="text" data-uikit-validate="required" />
+        </div>
+        <div class="uikit-field">
+          <label for="email">Email</label>
+          <input class="uikit-input" id="email" type="email" data-uikit-validate="required|email" />
+        </div>
+        <div class="uikit-field">
+          <label for="password">Password</label>
+          <input class="uikit-input" id="password" type="password" data-uikit-validate="required|minlength:8" />
+        </div>
+        <button class="uikit-btn" type="submit">Create account</button>
+      </form>
+    </section>
+
+    <section class="demo">
+      <h2>Toasts</h2>
+      <p class="demo-note">Notifications land in a polite live region, so they are announced without interrupting whatever the user is reading.</p>
+      <div class="button-row">
+        <button class="uikit-btn uikit-btn--ghost" id="toast-info">Show info</button>
+        <button class="uikit-btn uikit-btn--ghost" id="toast-success">Show success</button>
+        <button class="uikit-btn uikit-btn--ghost" id="toast-danger">Show error</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Built by Mahden Saleh · <a href="https://github.com/smahden">github.com/smahden</a></p>
+  </footer>
+
+  <script src="src/uikit.js"></script>
+  <script>
+    document.getElementById("toast-info").addEventListener("click", () =>
+      UIKit.toast("Settings saved to your profile.")
+    );
+    document.getElementById("toast-success").addEventListener("click", () =>
+      UIKit.toast("Account created successfully.", { variant: "success" })
+    );
+    document.getElementById("toast-danger").addEventListener("click", () =>
+      UIKit.toast("Could not reach the server.", { variant: "danger" })
+    );
+    document.getElementById("signup").addEventListener("uikit:valid", () =>
+      UIKit.toast("Form is valid — submitting.", { variant: "success" })
+    );
+    document.getElementById("confirm-delete").addEventListener("click", () =>
+      UIKit.toast("Nothing was deleted — this is a demo.", { variant: "danger" })
+    );
+  </script>
+</body>
+</html>

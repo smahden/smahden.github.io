@@ -73,6 +73,70 @@
     setTimeout(tick, 2200);
   }
 
+  /* ---------- Project filtering by discipline ---------- */
+  const filterBar = document.getElementById("project-filters");
+
+  if (filterBar) {
+    const cards = [...document.querySelectorAll("#projects-grid .project-card")];
+    const buttons = [...filterBar.querySelectorAll(".filter")];
+    const status = document.getElementById("filter-status");
+
+    // A card can belong to more than one discipline (TaskFlow is both software
+    // engineering and back end), so categories are space-separated.
+    const categoriesOf = (card) => (card.dataset.category || "").split(/\s+/);
+
+    // Count from the DOM rather than hardcoding numbers that can drift.
+    buttons.forEach((button) => {
+      const filter = button.dataset.filter;
+      // Capture the label before the count badge becomes part of textContent.
+      button.dataset.label = button.textContent.trim();
+      const count =
+        filter === "all"
+          ? cards.length
+          : cards.filter((card) => categoriesOf(card).includes(filter)).length;
+      const badge = document.createElement("span");
+      badge.className = "count";
+      badge.textContent = ` ${count}`;
+      button.appendChild(badge);
+    });
+
+    function applyFilter(filter) {
+      let shown = 0;
+      cards.forEach((card) => {
+        const match = filter === "all" || categoriesOf(card).includes(filter);
+        card.classList.toggle("is-hidden", !match);
+        if (match) shown++;
+      });
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.filter === filter));
+      });
+      const label =
+        filter === "all"
+          ? `Showing all ${shown} projects`
+          : `Showing ${shown} ${shown === 1 ? "project" : "projects"} in ${
+              filterBar.querySelector(`[data-filter="${filter}"]`).dataset.label
+            }`;
+      status.textContent = label;
+
+      const params = new URLSearchParams(window.location.search);
+      if (filter === "all") params.delete("focus");
+      else params.set("focus", filter);
+      const query = params.toString();
+      history.replaceState(null, "", `${window.location.pathname}${query ? "?" + query : ""}#projects`);
+    }
+
+    filterBar.addEventListener("click", (event) => {
+      const button = event.target.closest(".filter");
+      if (button) applyFilter(button.dataset.filter);
+    });
+
+    // Deep link: ?focus=security opens the site pre-filtered, which makes it
+    // easy to send a recruiter straight to the relevant work.
+    const requested = new URLSearchParams(window.location.search).get("focus");
+    const valid = buttons.some((button) => button.dataset.filter === requested);
+    applyFilter(valid ? requested : "all");
+  }
+
   /* ---------- Reveal sections on scroll ---------- */
   const revealTargets = document.querySelectorAll(
     ".section-title, .about-grid, .skill-card, .project-card, .timeline-item, .cert-card, .contact-lede"

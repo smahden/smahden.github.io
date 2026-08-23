@@ -203,131 +203,230 @@
     <!-- ============ PROJECTS ============ -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title"><span class="section-num">03.</span> Featured Projects</h2>
-        <div class="projects-grid">
+        <h2 class="section-title"><span class="section-num">03.</span> Portfolio</h2>
+        <p class="projects-intro">
+          Nine projects across the five areas I work in — machine learning, software
+          engineering, front end, back end, and security. Everything below is real,
+          running code with tests, documentation, and source you can read.
+        </p>
 
-          <article class="project-card">
+        <div class="filters" id="project-filters" role="group" aria-label="Filter projects by discipline">
+          <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter" data-filter="ml-ai" aria-pressed="false">🧠 ML &amp; AI</button>
+          <button type="button" class="filter" data-filter="software-engineering" aria-pressed="false">⚙️ Software Engineering</button>
+          <button type="button" class="filter" data-filter="front-end" aria-pressed="false">🎨 Front End</button>
+          <button type="button" class="filter" data-filter="back-end" aria-pressed="false">🗄️ Back End</button>
+          <button type="button" class="filter" data-filter="security" aria-pressed="false">🛡️ Cybersecurity</button>
+        </div>
+        <p class="filter-status" id="filter-status" role="status" aria-live="polite"></p>
+
+        <div class="projects-grid" id="projects-grid">
+
+          <article class="project-card" data-category="ml-ai">
+            <a class="project-shot" href="projects/recolab/web/" target="_blank" rel="noopener" tabindex="-1">
+              <img src="projects/recolab/docs/screenshot.png" alt="RecoLab demo ranking security modules from a two-item taste profile" loading="lazy" />
+            </a>
             <header class="project-head">
-              <span class="project-kicker">Featured · Thesis Project</span>
+              <span class="project-badge">🧠 ML &amp; AI</span>
+              <span class="project-links">
+                <a href="projects/recolab/web/" target="_blank" rel="noopener" aria-label="RecoLab live demo">Live ↗</a>
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/recolab" target="_blank" rel="noopener" aria-label="RecoLab source code">Code ↗</a>
+              </span>
             </header>
-            <h3>IDA — Adaptive Grade 4 Mathematics Software</h3>
+            <h3>RecoLab — Content-Based Recommender</h3>
             <p>
-              A full-stack adaptive learning platform that teaches Order of Operations
-              (PEMDAS) to Grade 4 students. IDA assesses each student's performance and
-              uses content-based filtering — an applied recommendation system — to
-              generate personalized learning paths that target their weak areas.
-              Designed in Figma, built as a component-based React (Vite) SPA, and
-              deployed as a live web application where students track their progress.
+              A recommendation engine written from scratch: TF-IDF vectorization,
+              cosine similarity, user taste profiles, and ranking metrics — no numpy,
+              no scikit-learn, so the math is visible and tested. The browser demo
+              recomputes the same cosine similarity in JavaScript and produces scores
+              identical to the Python CLI. 56 tests.
             </p>
             <ul class="chips project-tech">
-              <li>React (Vite)</li><li>Sass</li><li>PHP</li><li>MySQL</li><li>Content-Based Filtering</li><li>Figma</li>
+              <li>Python</li><li>TF-IDF</li><li>Cosine similarity</li><li>Pytest</li><li>JavaScript</li>
             </ul>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-category="ml-ai">
+            <div class="project-shot" aria-hidden="true">
+              <img src="assets/covers/ida.svg" alt="" loading="lazy" />
+            </div>
             <header class="project-head">
-              <span class="project-kicker">ToonCity Internship</span>
+              <span class="project-badge">🧠 ML &amp; AI</span>
+              <span class="project-kicker">Thesis</span>
             </header>
-            <h3>Employee Management System</h3>
+            <h3>IDA — Adaptive Mathematics Platform</h3>
             <p>
-              Internal web application that centralizes employee records and streamlines
-              operations. Implemented RESTful CRUD endpoints with server-side validation
-              and form handling, and designed an optimized relational database schema
-              with efficient queries and table relationships for reliable data retrieval.
+              My thesis: a full-stack adaptive learning platform that teaches Order of
+              Operations to Grade 4 students. IDA assesses each student's performance
+              and uses content-based filtering — an applied recommendation system — to
+              generate personalized learning paths targeting their weak areas. Designed
+              in Figma, built as a component-based React SPA.
             </p>
             <ul class="chips project-tech">
-              <li>PHP</li><li>MySQL</li><li>Sass</li><li>REST APIs</li>
+              <li>React (Vite)</li><li>Sass</li><li>PHP</li><li>MySQL</li><li>Content-Based Filtering</li>
             </ul>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-category="security">
+            <a class="project-shot" href="projects/sentinel/docs/report.html" target="_blank" rel="noopener" tabindex="-1">
+              <img src="projects/sentinel/docs/screenshot.png" alt="Sentinel security report grading a site F with a critical CORS finding" loading="lazy" />
+            </a>
+            <header class="project-head">
+              <span class="project-badge">🛡️ Cybersecurity</span>
+              <span class="project-links">
+                <a href="projects/sentinel/docs/report.html" target="_blank" rel="noopener" aria-label="Sample Sentinel report">Report ↗</a>
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/sentinel" target="_blank" rel="noopener" aria-label="Sentinel source code">Code ↗</a>
+              </span>
+            </header>
+            <h3>Sentinel — Security Audit Toolkit</h3>
+            <p>
+              Defensive tooling that audits systems you control: it grades HTTP security
+              headers A–F (flagging present-but-weak values, not just missing ones),
+              scans a source tree for committed credentials with every value redacted,
+              and scores password strength by entropy plus the patterns that make a
+              strong-looking password guessable. 90 tests; exits non-zero for CI.
+            </p>
+            <ul class="chips project-tech">
+              <li>Python</li><li>CSP / HSTS</li><li>Secret scanning</li><li>Entropy</li><li>Pytest</li>
+            </ul>
+          </article>
+
+          <article class="project-card" data-category="front-end">
+            <a class="project-shot" href="projects/uikit/" target="_blank" rel="noopener" tabindex="-1">
+              <img src="projects/uikit/docs/screenshot.png" alt="UIKit component demo in dark mode with a modal dialog open" loading="lazy" />
+            </a>
+            <header class="project-head">
+              <span class="project-badge">🎨 Front End</span>
+              <span class="project-links">
+                <a href="projects/uikit/" target="_blank" rel="noopener" aria-label="UIKit live demo">Live ↗</a>
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/uikit" target="_blank" rel="noopener" aria-label="UIKit source code">Code ↗</a>
+              </span>
+            </header>
+            <h3>UIKit — Accessible Components</h3>
+            <p>
+              Seven accessible components in ~400 lines of dependency-free JavaScript:
+              a modal that traps and restores focus, tabs with roving tabindex, a
+              combobox driven by <code>aria-activedescendant</code>, live-region toasts,
+              and form validation wired through <code>aria-describedby</code>. 27 tests
+              drive it with real key presses and assert where focus lands.
+            </p>
+            <ul class="chips project-tech">
+              <li>JavaScript</li><li>ARIA</li><li>Keyboard UX</li><li>CSS custom properties</li><li>Playwright</li>
+            </ul>
+          </article>
+
+          <article class="project-card" data-category="software-engineering back-end">
             <a class="project-shot" href="https://github.com/smahden/portfolio/tree/main/projects/taskflow" target="_blank" rel="noopener" tabindex="-1">
               <img src="projects/taskflow/docs/screenshot.png" alt="TaskFlow Kanban board with To Do, In Progress and Done columns" loading="lazy" />
             </a>
             <header class="project-head">
+              <span class="project-badge">⚙️ Software Engineering</span>
               <span class="project-links">
-                <a href="https://github.com/smahden/portfolio/tree/main/projects/taskflow" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/taskflow" target="_blank" rel="noopener" aria-label="TaskFlow source code">Code ↗</a>
               </span>
             </header>
             <h3>TaskFlow — Kanban Task Manager</h3>
             <p>
-              A full-stack Kanban board with native drag-and-drop, JWT
-              authentication, and per-user boards, columns, and cards. The Express
-              API renumbers card positions transactionally on every move, and 22
-              Jest + Supertest tests cover auth, ownership, and movement edge cases.
+              A full-stack Kanban board with native drag-and-drop, JWT authentication,
+              and per-user boards, columns, and cards. The Express API renumbers card
+              positions transactionally on every move, and 22 Jest + Supertest tests
+              cover auth, ownership enforcement, and movement edge cases.
             </p>
             <ul class="chips project-tech">
               <li>Node.js</li><li>Express</li><li>SQLite</li><li>JWT</li><li>Jest</li>
             </ul>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-category="back-end software-engineering">
             <a class="project-shot" href="https://github.com/smahden/portfolio/tree/main/projects/shoplite" target="_blank" rel="noopener" tabindex="-1">
               <img src="projects/shoplite/docs/screenshot.png" alt="ShopLite interactive OpenAPI documentation listing auth and product endpoints" loading="lazy" />
             </a>
             <header class="project-head">
+              <span class="project-badge">🗄️ Back End</span>
               <span class="project-links">
-                <a href="https://github.com/smahden/portfolio/tree/main/projects/shoplite" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/shoplite" target="_blank" rel="noopener" aria-label="ShopLite source code">Code ↗</a>
               </span>
             </header>
             <h3>ShopLite — E-commerce API</h3>
             <p>
-              A production-style e-commerce backend: searchable product catalog,
-              per-user carts with stock control, and checkout that snapshots prices
-              into immutable order history. Money is stored as integer cents, and
-              22 pytest tests cover auth, permissions, stock limits, and privacy.
+              A production-style backend: searchable product catalog, per-user carts
+              with stock control, and checkout that snapshots prices into immutable
+              order history, so later catalog edits never rewrite what a customer paid.
+              Money is stored as integer cents. 22 pytest tests.
             </p>
             <ul class="chips project-tech">
               <li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>SQLite</li><li>Pytest</li>
             </ul>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-category="front-end">
             <a class="project-shot" href="projects/devmetrics/?repo=facebook/react" target="_blank" rel="noopener" tabindex="-1">
-              <img src="projects/devmetrics/docs/screenshot.png" alt="DevMetrics dashboard showing stars, forks and a weekly commit chart for facebook/react" loading="lazy" />
+              <img src="projects/devmetrics/docs/screenshot.png" alt="DevMetrics dashboard showing stars, forks and a weekly commit chart" loading="lazy" />
             </a>
             <header class="project-head">
+              <span class="project-badge">🎨 Front End</span>
               <span class="project-links">
-                <a href="projects/devmetrics/?repo=facebook/react" target="_blank" rel="noopener" aria-label="Live demo">Live ↗</a>
-                <a href="https://github.com/smahden/portfolio/tree/main/projects/devmetrics" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+                <a href="projects/devmetrics/?repo=facebook/react" target="_blank" rel="noopener" aria-label="DevMetrics live demo">Live ↗</a>
+                <a href="https://github.com/smahden/portfolio/tree/main/projects/devmetrics" target="_blank" rel="noopener" aria-label="DevMetrics source code">Code ↗</a>
               </span>
             </header>
-            <h3>DevMetrics — GitHub Analytics Dashboard</h3>
+            <h3>DevMetrics — GitHub Analytics</h3>
             <p>
               Instant analytics for any public GitHub repository — weekly commit
               cadence, language share, and contributor load — with every chart
-              hand-rolled in SVG, zero dependencies. Handles the GitHub stats API's
-              202-and-retry dance, rate limits, and shareable deep links.
+              hand-rolled in SVG and zero dependencies. Handles the stats API's
+              202-and-retry behavior, rate limits, and shareable deep links.
             </p>
             <ul class="chips project-tech">
               <li>JavaScript</li><li>SVG</li><li>GitHub API</li><li>GitHub Pages</li>
             </ul>
           </article>
 
-          <article class="project-card">
+          <article class="project-card" data-category="back-end">
+            <div class="project-shot" aria-hidden="true">
+              <img src="assets/covers/ems.svg" alt="" loading="lazy" />
+            </div>
+            <header class="project-head">
+              <span class="project-badge">🗄️ Back End</span>
+              <span class="project-kicker">Internship</span>
+            </header>
+            <h3>Employee Management System</h3>
+            <p>
+              Internal web application built during my ToonCity internship to centralize
+              employee records and streamline operations. Implemented RESTful CRUD
+              endpoints with server-side validation and form handling, and designed an
+              optimized relational schema with efficient queries and table relationships.
+            </p>
+            <ul class="chips project-tech">
+              <li>PHP</li><li>MySQL</li><li>Sass</li><li>REST APIs</li>
+            </ul>
+          </article>
+
+          <article class="project-card" data-category="front-end">
             <a class="project-shot" href="https://github.com/smahden/portfolio" target="_blank" rel="noopener" tabindex="-1">
               <img src="assets/portfolio-screenshot.png" alt="This portfolio's landing page in dark mode" loading="lazy" />
             </a>
             <header class="project-head">
+              <span class="project-badge">🎨 Front End</span>
               <span class="project-links">
-                <a href="https://github.com/smahden/portfolio" target="_blank" rel="noopener" aria-label="Source code">Code ↗</a>
+                <a href="https://github.com/smahden/portfolio" target="_blank" rel="noopener" aria-label="Portfolio source code">Code ↗</a>
               </span>
             </header>
             <h3>This Portfolio Site</h3>
             <p>
-              The site you're looking at — hand-built with semantic HTML, modern CSS
-              (custom properties, grid, prefers-color-scheme), and dependency-free
-              vanilla JavaScript. Fully responsive, keyboard-accessible, dark/light
-              themed, and deployed automatically to GitHub Pages on every push.
+              The site you're reading — hand-built with semantic HTML, modern CSS
+              (custom properties, grid, <code>prefers-color-scheme</code>), and
+              dependency-free JavaScript. Fully responsive, keyboard-accessible,
+              dark/light themed, and deployed automatically to GitHub Pages.
             </p>
             <ul class="chips project-tech">
-              <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>GitHub Pages</li>
+              <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>GitHub Actions</li>
             </ul>
           </article>
 
         </div>
         <p class="projects-more">
-          More on <a href="https://github.com/smahden" target="_blank" rel="noopener">github.com/smahden ↗</a>
+          Every project's source lives on <a href="https://github.com/smahden" target="_blank" rel="noopener">github.com/smahden ↗</a>
         </p>
       </div>
     </section>

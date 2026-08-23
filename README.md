@@ -8,52 +8,60 @@ A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and 
 
 ## Features
 
+- 🗂 Portfolio covering five disciplines — ML & AI, software engineering, front end, back end, and cybersecurity — filterable in place and deep-linkable (`?focus=security`)
+- 🖼 Every project card carries a real screenshot of the project running
 - 🌗 Dark/light theme with system-preference detection and persistence
 - 📱 Fully responsive (mobile menu, fluid type, grid layouts)
 - ♿ Accessible: semantic HTML, skip link, keyboard navigation, reduced-motion support
 - ⚡ Zero dependencies — loads instantly, easy to maintain
-- 🎬 Subtle scroll-reveal animations and a typed hero effect
-- 🚀 CI/CD: auto-deploys to GitHub Pages via GitHub Actions
+- 🚀 CI/CD: every project's test suite runs on push, and the site auto-deploys to GitHub Pages
 
 ## Project structure
 
 ```
 ├── index.html                    # All page content (edit your info here)
 ├── styles.css                    # Theme, layout, responsive styles
-├── script.js                     # Theme toggle, mobile menu, animations
-├── resume/
-│   └── Mahden_Saleh_Resume.md    # Downloadable résumé (edit + export to PDF)
-├── projects/                     # Three complete, tested portfolio projects ↓
-│   ├── taskflow/                 # Kanban app — Node/Express/SQLite, 22 Jest tests
-│   ├── shoplite/                 # E-commerce API — FastAPI/SQLAlchemy, 22 pytest tests
-│   └── devmetrics/               # GitHub analytics — zero-dep JS + SVG charts
+├── script.js                     # Theme toggle, mobile menu, project filtering
+├── cv.pdf                        # Downloadable résumé
+├── resume/Mahden_Saleh_Resume.md # Editable résumé source
+├── assets/covers/                # SVG covers for projects without a live UI
+├── projects/                     # Six complete, tested projects ↓
+│   ├── recolab/                  # ML & AI     — recommender, 56 pytest tests
+│   ├── sentinel/                 # Security    — audit toolkit, 90 pytest tests
+│   ├── uikit/                    # Front End   — a11y components, 27 Playwright tests
+│   ├── taskflow/                 # Software Eng — Kanban app, 22 Jest tests
+│   ├── shoplite/                 # Back End    — e-commerce API, 22 pytest tests
+│   └── devmetrics/               # Front End   — GitHub analytics, zero deps
 ├── scripts/split-projects.sh     # Promote each project to its own GitHub repo
-└── .github/workflows/            # deploy.yml (Pages) + ci.yml (runs all test suites)
+└── .github/workflows/            # deploy.yml (Pages) + ci.yml (all five test suites)
 ```
 
 ## The projects
 
-Each folder in `projects/` is a complete, self-contained application with its own README, test suite, `.gitignore`, and CI workflow:
+Nine portfolio entries across five disciplines. Six are complete applications in `projects/`, each self-contained with its own README, test suite, `.gitignore`, and CI workflow:
 
-| Project | Stack | Tests | Highlights |
-|---|---|---|---|
-| **TaskFlow** | Node.js, Express, SQLite | 22 (Jest + Supertest) | JWT auth, ownership enforcement, transactional drag-and-drop reordering |
-| **ShopLite** | Python, FastAPI, SQLAlchemy 2.0 | 22 (pytest) | Stock control, immutable order snapshots, money as integer cents |
-| **DevMetrics** | Vanilla JS, GitHub REST API | browser-verified | Hand-rolled SVG charts, 202-retry handling, deep links; live on this site's Pages deploy |
+| Project | Track | Stack | Tests | Live |
+|---|---|---|---|---|
+| **RecoLab** | 🧠 ML & AI | Python (stdlib only), JS | 56 pytest | [demo](projects/recolab/web/) |
+| **Sentinel** | 🛡️ Cybersecurity | Python (stdlib only) | 90 pytest | [sample report](projects/sentinel/docs/report.html) |
+| **UIKit** | 🎨 Front End | JavaScript, ARIA | 27 Playwright | [demo](projects/uikit/) |
+| **TaskFlow** | ⚙️ Software Engineering | Node, Express, SQLite | 22 Jest | — |
+| **ShopLite** | 🗄️ Back End | FastAPI, SQLAlchemy | 22 pytest | — |
+| **DevMetrics** | 🎨 Front End | Vanilla JS, GitHub API | browser-verified | [demo](projects/devmetrics/) |
 
-**To give each project its own GitHub repository** (recommended — separate repos look better on a profile): install the [GitHub CLI](https://cli.github.com), run `gh auth login`, then:
+**195 tests in total**, all run by the root CI workflow on every push.
+
+Two further entries — **IDA** (thesis) and the **Employee Management System** (ToonCity internship) — are described on the site with SVG covers rather than screenshots, since their source is not public.
+
+The site's Portfolio section filters by discipline, and the filter is deep-linkable: `?focus=security` opens it pre-filtered, which is useful when applying to a role in one specific area.
+
+**To give each project its own GitHub repository** (separate repos look better on a profile): install the [GitHub CLI](https://cli.github.com), run `gh auth login`, then:
 
 ```bash
 ./scripts/split-projects.sh
 ```
 
-Each new repo's CI goes green on the first push. Afterwards, point the portfolio's `Code ↗` links at the new repo URLs.
-
-## Getting it live (one-time setup)
-
-1. Merge this branch into your default branch (`main`).
-2. On GitHub, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. Push (or re-run the workflow) — the site publishes to `https://smahden.github.io/portfolio/`.
+Each new repo ships its own CI workflow and goes green on the first push. Afterwards, point the `Code ↗` links in `index.html` at the new repo URLs.
 
 ## Keeping it up to date
 

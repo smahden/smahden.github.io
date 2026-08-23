@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sentinel security report</title>
+<style>
+  :root {
+    --bg:#0b1120; --card:#141d33; --raised:#1b2745; --border:#26334f;
+    --text:#cfd8ee; --strong:#f2f6ff; --muted:#8593b3;
+    font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);line-height:1.6;padding:2.5rem 1.2rem}
+  .wrap{width:min(920px,100%);margin-inline:auto}
+  .masthead{text-align:center;margin-bottom:2rem}
+  .masthead h1{color:var(--strong);font-size:1.7rem}
+  .masthead p{color:var(--muted);font-size:.88rem;margin-top:.4rem}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;
+        padding:1.5rem;margin-bottom:1.4rem}
+  .card-head{display:flex;justify-content:space-between;gap:1.4rem;align-items:flex-start;
+        padding-bottom:1.1rem;border-bottom:1px solid var(--border);margin-bottom:1.1rem}
+  .kind{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .card-head h2{color:var(--strong);font-size:1.15rem;word-break:break-all}
+  .pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem}
+  .pill{font-size:.72rem;font-weight:700;border-radius:999px;padding:.15rem .6rem;
+        color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);
+        border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+  .grade{text-align:center;flex-shrink:0;border:2px solid var(--c);border-radius:12px;
+        padding:.5rem 1rem;min-width:92px}
+  .grade .letter{display:block;font-size:2.1rem;font-weight:800;color:var(--c);line-height:1}
+  .grade .score{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
+  .findings{list-style:none;display:grid;gap:.8rem}
+  .finding{background:var(--raised);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem}
+  .finding.clean{color:var(--muted);font-size:.9rem}
+  .finding-head{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.35rem}
+  .finding-head h3{color:var(--strong);font-size:.95rem}
+  .sev{font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+        color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);
+        background:color-mix(in srgb,var(--c) 14%,transparent);border-radius:999px;padding:.1rem .5rem}
+  .loc{font-family:ui-monospace,monospace;font-size:.72rem;color:var(--muted)}
+  .finding p{font-size:.87rem}
+  .fix{margin-top:.4rem;color:var(--muted)}
+  .fix strong{color:#5eead4}
+  code{font-family:ui-monospace,monospace}
+  footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:1.5rem}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="masthead">
+      <h1>🛡️ Sentinel security report</h1>
+      <p>15 findings across 2 checks · generated 2026-08-23 07:54 UTC</p>
+    </header>
+    
+    <section class="card">
+      <header class="card-head">
+        <div>
+          <p class="kind">HTTP security headers</p>
+          <h2>https://demo.example.com</h2>
+          <div class="pills"><span class="pill" style="--c:#f87171">1 critical</span><span class="pill" style="--c:#fbbf24">3 medium</span><span class="pill" style="--c:#60a5fa">5 low</span><span class="pill" style="--c:#94a3b8">1 info</span></div>
+        </div>
+        <div class="grade" style="--c:#f87171">
+          <span class="letter">F</span>
+          <span class="score">10/100</span>
+        </div>
+      </header>
+      <ul class="findings">
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#f87171">critical</span>
+            <h3>CORS allows any origin with credentials</h3>
+            
+          </div>
+          <p>Access-Control-Allow-Origin: * combined with allow-credentials lets any site read authenticated responses on behalf of a logged-in user.</p>
+          <p class="fix"><strong>Fix:</strong> Echo back a specific allowed origin instead of a wildcard.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fbbf24">medium</span>
+            <h3>Content-Security-Policy allows &#x27;unsafe-inline&#x27;</h3>
+            
+          </div>
+          <p>&#x27;unsafe-inline&#x27; permits inline &lt;script&gt; and event-handler attributes, which is exactly the payload most XSS relies on.</p>
+          <p class="fix"><strong>Fix:</strong> Move inline scripts to files, or use a per-response nonce or hash.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fbbf24">medium</span>
+            <h3>Content-Security-Policy uses a wildcard source</h3>
+            
+          </div>
+          <p>A wildcard in default-src or script-src permits scripts from any host.</p>
+          <p class="fix"><strong>Fix:</strong> List the specific origins you actually load code from.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fbbf24">medium</span>
+            <h3>No clickjacking protection</h3>
+            
+          </div>
+          <p>Neither X-Frame-Options nor a CSP frame-ancestors directive is set, so the page can be framed by any site and used for clickjacking.</p>
+          <p class="fix"><strong>Fix:</strong> Send `X-Frame-Options: DENY` or `CSP: frame-ancestors &#x27;none&#x27;`.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#60a5fa">low</span>
+            <h3>X-Content-Type-Options is not &#x27;nosniff&#x27;</h3>
+            
+          </div>
+          <p>Browsers may MIME-sniff a response and execute an uploaded file as script even though it was served as text.</p>
+          <p class="fix"><strong>Fix:</strong> Send `X-Content-Type-Options: nosniff`.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#60a5fa">low</span>
+            <h3>server header discloses server software</h3>
+            <code class="loc">server</code>
+          </div>
+          <p>`server: nginx/1.18.0` tells an attacker exactly which version to look up known vulnerabilities for.</p>
+          <p class="fix"><strong>Fix:</strong> Suppress the server header at the proxy or app server.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#60a5fa">low</span>
+            <h3>x-powered-by header discloses server software</h3>
+            <code class="loc">x-powered-by</code>
+          </div>
+          <p>`x-powered-by: Express` tells an attacker exactly which version to look up known vulnerabilities for.</p>
+          <p class="fix"><strong>Fix:</strong> Suppress the x-powered-by header at the proxy or app server.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#60a5fa">low</span>
+            <h3>Strict-Transport-Security max-age is short</h3>
+            
+          </div>
+          <p>max-age is 3600s; browsers stop enforcing HTTPS once it expires, and preload requires at least 15552000s.</p>
+          <p class="fix"><strong>Fix:</strong> Raise max-age to 15552000 or more.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#60a5fa">low</span>
+            <h3>Referrer-Policy is missing</h3>
+            
+          </div>
+          <p>Full URLs — including any tokens in the query string — leak to third-party sites in the Referer header.</p>
+          <p class="fix"><strong>Fix:</strong> Send `Referrer-Policy: strict-origin-when-cross-origin`.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#94a3b8">info</span>
+            <h3>Permissions-Policy is not set</h3>
+            
+          </div>
+          <p>Camera, microphone, and geolocation stay available to embedded frames.</p>
+          <p class="fix"><strong>Fix:</strong> Send `Permissions-Policy: camera=(), microphone=(), geolocation=()`.</p>
+        </li></ul>
+    </section>
+    <section class="card">
+      <header class="card-head">
+        <div>
+          <p class="kind">Secret scan</p>
+          <h2>/home/user/Portfolio/projects/sentinel/samples/app</h2>
+          <div class="pills"><span class="pill" style="--c:#fb923c">4 high</span><span class="pill" style="--c:#fbbf24">1 medium</span></div>
+        </div>
+        <div class="grade" style="--c:#f87171">
+          <span class="letter">F</span>
+          <span class="score">10/100</span>
+        </div>
+      </header>
+      <ul class="findings">
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fb923c">high</span>
+            <h3>Database connection string with password</h3>
+            <code class="loc">config.py:9</code>
+          </div>
+          <p>Matched `s3cr********w0rd` in source.</p>
+          <p class="fix"><strong>Fix:</strong> Move the URL into configuration and rotate the database password.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fb923c">high</span>
+            <h3>Hardcoded credential</h3>
+            <code class="loc">config.py:12</code>
+          </div>
+          <p>Matched `9f2c********7b21` in source.</p>
+          <p class="fix"><strong>Fix:</strong> Read the value from an environment variable or a secret manager.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fb923c">high</span>
+            <h3>Hardcoded credential</h3>
+            <code class="loc">config.py:15</code>
+          </div>
+          <p>Matched `k7Qx********Hj0K` in source.</p>
+          <p class="fix"><strong>Fix:</strong> Read the value from an environment variable or a secret manager.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fb923c">high</span>
+            <h3>Hardcoded credential</h3>
+            <code class="loc">deploy.sh:6</code>
+          </div>
+          <p>Matched `pR0d********2b7c` in source.</p>
+          <p class="fix"><strong>Fix:</strong> Read the value from an environment variable or a secret manager.</p>
+        </li>
+        <li class="finding">
+          <div class="finding-head">
+            <span class="sev" style="--c:#fbbf24">medium</span>
+            <h3>JSON Web Token</h3>
+            <code class="loc">config.py:18</code>
+          </div>
+          <p>Matched `eyJh********g5Jk` in source.</p>
+          <p class="fix"><strong>Fix:</strong> Treat the token as compromised; shorten token lifetimes if it was long-lived.</p>
+        </li></ul>
+    </section>
+    <footer>Generated by Sentinel — defensive security tooling by Mahden Saleh</footer>
+  </div>
+</body>
+</html>

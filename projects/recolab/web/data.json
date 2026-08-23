@@ -1,0 +1,977 @@
+{
+ "generated_by": "recolab.export",
+ "vocabulary_size": 416,
+ "items": [
+  {
+   "id": "ml-101",
+   "title": "Intro to Machine Learning",
+   "category": "machine-learning",
+   "tags": [
+    "supervised",
+    "regression",
+    "classification"
+   ],
+   "description": "Core ideas behind supervised learning: features, labels, training and test splits, overfitting, and how a model generalizes to data it has never seen.",
+   "vector": {
+    "intro": 0.36829,
+    "supervised": 0.36829,
+    "learning": 0.31275,
+    "classification": 0.29713,
+    "regression": 0.29713,
+    "machine": 0.29232,
+    "behind": 0.17549,
+    "core": 0.17549,
+    "generalizes": 0.17549,
+    "ideas": 0.17549,
+    "labels": 0.17549,
+    "overfitting": 0.17549,
+    "seen": 0.17549,
+    "splits": 0.17549,
+    "training": 0.17549,
+    "features": 0.15693,
+    "model": 0.15693,
+    "test": 0.15693,
+    "data": 0.13354
+   }
+  },
+  {
+   "id": "ml-vectors",
+   "title": "Text Vectorization with TF-IDF",
+   "category": "machine-learning",
+   "tags": [
+    "nlp",
+    "tfidf",
+    "features"
+   ],
+   "description": "Turn documents into numeric vectors: term frequency, inverse document frequency, sublinear scaling, and L2 normalization for cosine similarity.",
+   "vector": {
+    "text": 0.33983,
+    "tf-idf": 0.33983,
+    "vectorization": 0.33983,
+    "frequency": 0.27417,
+    "tfidf": 0.27417,
+    "features": 0.24517,
+    "nlp": 0.24517,
+    "learning": 0.17502,
+    "machine": 0.17502,
+    "cosine": 0.16193,
+    "documents": 0.16193,
+    "inverse": 0.16193,
+    "l2": 0.16193,
+    "numeric": 0.16193,
+    "scaling": 0.16193,
+    "sublinear": 0.16193,
+    "term": 0.16193,
+    "turn": 0.16193,
+    "vectors": 0.16193,
+    "document": 0.1448,
+    "normalization": 0.1448,
+    "similarity": 0.13265
+   }
+  },
+  {
+   "id": "ml-recsys",
+   "title": "Recommendation Systems",
+   "category": "machine-learning",
+   "tags": [
+    "recommenders",
+    "similarity",
+    "content-based"
+   ],
+   "description": "Content-based and collaborative filtering, cold-start problems, and building a user taste profile from items the user already liked.",
+   "vector": {
+    "content-based": 0.37095,
+    "recommendation": 0.37095,
+    "systems": 0.37095,
+    "recommenders": 0.29928,
+    "user": 0.29928,
+    "similarity": 0.24516,
+    "learning": 0.19105,
+    "machine": 0.19105,
+    "already": 0.17676,
+    "cold-start": 0.17676,
+    "collaborative": 0.17676,
+    "filtering": 0.17676,
+    "items": 0.17676,
+    "liked": 0.17676,
+    "profile": 0.17676,
+    "taste": 0.17676,
+    "problems": 0.15806
+   }
+  },
+  {
+   "id": "ml-eval",
+   "title": "Evaluating Ranked Results",
+   "category": "machine-learning",
+   "tags": [
+    "metrics",
+    "evaluation",
+    "ranking"
+   ],
+   "description": "Precision and recall at k, mean reciprocal rank, average precision, and NDCG \u2014 how to tell whether a ranking model is actually any good.",
+   "vector": {
+    "evaluating": 0.34075,
+    "ranked": 0.34075,
+    "ranking": 0.34075,
+    "results": 0.34075,
+    "evaluation": 0.27491,
+    "metrics": 0.27491,
+    "precision": 0.27491,
+    "learning": 0.17549,
+    "machine": 0.17549,
+    "average": 0.16237,
+    "good": 0.16237,
+    "mean": 0.16237,
+    "ndcg": 0.16237,
+    "rank": 0.16237,
+    "recall": 0.16237,
+    "reciprocal": 0.16237,
+    "tell": 0.16237,
+    "model": 0.14519,
+    "actually": 0.12355
+   }
+  },
+  {
+   "id": "ml-nlp",
+   "title": "Natural Language Processing Basics",
+   "category": "machine-learning",
+   "tags": [
+    "nlp",
+    "tokenization",
+    "embeddings"
+   ],
+   "description": "Tokenization, stopwords, stemming, and the jump from sparse bag-of-words representations to dense learned embeddings.",
+   "vector": {
+    "embeddings": 0.33968,
+    "language": 0.33968,
+    "natural": 0.33968,
+    "processing": 0.33968,
+    "tokenization": 0.33968,
+    "basics": 0.30375,
+    "nlp": 0.24506,
+    "learning": 0.17494,
+    "machine": 0.17494,
+    "bag-of-words": 0.16186,
+    "dense": 0.16186,
+    "jump": 0.16186,
+    "learned": 0.16186,
+    "representations": 0.16186,
+    "sparse": 0.16186,
+    "stemming": 0.16186,
+    "stopwords": 0.16186
+   }
+  },
+  {
+   "id": "ml-cluster",
+   "title": "Clustering and Unsupervised Learning",
+   "category": "machine-learning",
+   "tags": [
+    "kmeans",
+    "unsupervised",
+    "similarity"
+   ],
+   "description": "Grouping unlabeled data with k-means and hierarchical clustering, choosing k, and measuring cluster quality.",
+   "vector": {
+    "unsupervised": 0.48218,
+    "clustering": 0.44095,
+    "kmeans": 0.31287,
+    "learning": 0.3078,
+    "similarity": 0.25629,
+    "machine": 0.19972,
+    "cluster": 0.18478,
+    "grouping": 0.18478,
+    "hierarchical": 0.18478,
+    "k-means": 0.18478,
+    "quality": 0.18478,
+    "unlabeled": 0.18478,
+    "choosing": 0.16524,
+    "measuring": 0.15137,
+    "data": 0.14061
+   }
+  },
+  {
+   "id": "ml-nn",
+   "title": "Neural Networks from Scratch",
+   "category": "machine-learning",
+   "tags": [
+    "deep-learning",
+    "backpropagation",
+    "python"
+   ],
+   "description": "Build a small feedforward network by hand: forward pass, loss functions, backpropagation, and gradient descent.",
+   "vector": {
+    "backpropagation": 0.35686,
+    "networks": 0.35686,
+    "neural": 0.35686,
+    "scratch": 0.35686,
+    "deep-learning": 0.28792,
+    "python": 0.25746,
+    "learning": 0.18379,
+    "machine": 0.18379,
+    "descent": 0.17005,
+    "feedforward": 0.17005,
+    "forward": 0.17005,
+    "gradient": 0.17005,
+    "hand": 0.17005,
+    "loss": 0.17005,
+    "network": 0.17005,
+    "pass": 0.17005,
+    "small": 0.15206,
+    "functions": 0.1393
+   }
+  },
+  {
+   "id": "web-html",
+   "title": "Semantic HTML and Document Structure",
+   "category": "front-end",
+   "tags": [
+    "html",
+    "semantics",
+    "accessibility"
+   ],
+   "description": "Headings, landmarks, lists, and forms that describe meaning rather than appearance, giving assistive technology something real to work with.",
+   "vector": {
+    "html": 0.42159,
+    "semantic": 0.33906,
+    "structure": 0.33906,
+    "document": 0.30319,
+    "semantics": 0.27355,
+    "accessibility": 0.24462,
+    "front": 0.17462,
+    "appearance": 0.16156,
+    "describe": 0.16156,
+    "forms": 0.16156,
+    "giving": 0.16156,
+    "headings": 0.16156,
+    "landmarks": 0.16156,
+    "meaning": 0.16156,
+    "rather": 0.16156,
+    "something": 0.16156,
+    "assistive": 0.14447,
+    "lists": 0.14447,
+    "real": 0.14447,
+    "technology": 0.14447,
+    "end": 0.12976
+   }
+  },
+  {
+   "id": "web-css",
+   "title": "Modern CSS Layout",
+   "category": "front-end",
+   "tags": [
+    "css",
+    "flexbox",
+    "grid",
+    "responsive"
+   ],
+   "description": "Flexbox and grid, custom properties, container queries, and building responsive layouts without a framework.",
+   "vector": {
+    "css": 0.43759,
+    "flexbox": 0.35192,
+    "grid": 0.35192,
+    "modern": 0.35192,
+    "responsive": 0.35192,
+    "layout": 0.3147,
+    "front": 0.18125,
+    "container": 0.16769,
+    "custom": 0.16769,
+    "framework": 0.16769,
+    "layouts": 0.16769,
+    "properties": 0.16769,
+    "queries": 0.14996,
+    "end": 0.13468
+   }
+  },
+  {
+   "id": "web-js",
+   "title": "JavaScript for the DOM",
+   "category": "front-end",
+   "tags": [
+    "javascript",
+    "dom",
+    "events"
+   ],
+   "description": "Selecting elements, handling events, delegation, and updating the DOM efficiently in the browser.",
+   "vector": {
+    "dom": 0.52929,
+    "javascript": 0.49473,
+    "events": 0.39788,
+    "front": 0.20491,
+    "browser": 0.18959,
+    "delegation": 0.18959,
+    "efficiently": 0.18959,
+    "elements": 0.18959,
+    "handling": 0.18959,
+    "selecting": 0.18959,
+    "updating": 0.18959,
+    "end": 0.15227
+   }
+  },
+  {
+   "id": "web-a11y",
+   "title": "Web Accessibility in Practice",
+   "category": "front-end",
+   "tags": [
+    "accessibility",
+    "aria",
+    "keyboard"
+   ],
+   "description": "Keyboard navigation, focus management, ARIA roles and states, color contrast, and testing a page the way real assistive technology sees it.",
+   "vector": {
+    "accessibility": 0.39618,
+    "aria": 0.35631,
+    "keyboard": 0.35631,
+    "practice": 0.35631,
+    "web": 0.27114,
+    "front": 0.18351,
+    "color": 0.16978,
+    "contrast": 0.16978,
+    "focus": 0.16978,
+    "navigation": 0.16978,
+    "page": 0.16978,
+    "sees": 0.16978,
+    "states": 0.16978,
+    "assistive": 0.15182,
+    "management": 0.15182,
+    "real": 0.15182,
+    "roles": 0.15182,
+    "technology": 0.15182,
+    "testing": 0.13908,
+    "end": 0.13636
+   }
+  },
+  {
+   "id": "web-react",
+   "title": "Component-Based UI with React",
+   "category": "front-end",
+   "tags": [
+    "react",
+    "components",
+    "state"
+   ],
+   "description": "Thinking in components: props, state, effects, lists and keys, and lifting state up to share it between siblings.",
+   "vector": {
+    "react": 0.44166,
+    "state": 0.40389,
+    "component-based": 0.3552,
+    "components": 0.3552,
+    "ui": 0.3552,
+    "front": 0.18293,
+    "effects": 0.16925,
+    "lifting": 0.16925,
+    "props": 0.16925,
+    "share": 0.16925,
+    "siblings": 0.16925,
+    "thinking": 0.16925,
+    "lists": 0.15135,
+    "end": 0.13594,
+    "keys": 0.1288
+   }
+  },
+  {
+   "id": "web-perf",
+   "title": "Front-End Performance",
+   "category": "front-end",
+   "tags": [
+    "performance",
+    "loading",
+    "rendering"
+   ],
+   "description": "Critical rendering path, lazy loading, bundle size, layout thrashing, and measuring what users actually experience.",
+   "vector": {
+    "front-end": 0.38958,
+    "loading": 0.38958,
+    "rendering": 0.38958,
+    "performance": 0.36861,
+    "front": 0.20064,
+    "bundle": 0.18564,
+    "critical": 0.18564,
+    "experience": 0.18564,
+    "lazy": 0.18564,
+    "path": 0.18564,
+    "size": 0.18564,
+    "thrashing": 0.18564,
+    "users": 0.18564,
+    "layout": 0.166,
+    "measuring": 0.15207,
+    "end": 0.14909,
+    "actually": 0.14126
+   }
+  },
+  {
+   "id": "web-charts",
+   "title": "Data Visualization with SVG",
+   "category": "front-end",
+   "tags": [
+    "svg",
+    "charts",
+    "dataviz"
+   ],
+   "description": "Drawing bars, arcs, and axes directly in SVG \u2014 coordinate math, scales, and making charts readable and accessible.",
+   "vector": {
+    "svg": 0.47303,
+    "charts": 0.35558,
+    "visualization": 0.35558,
+    "dataviz": 0.28688,
+    "data": 0.27058,
+    "front": 0.18313,
+    "accessible": 0.16944,
+    "arcs": 0.16944,
+    "axes": 0.16944,
+    "bars": 0.16944,
+    "coordinate": 0.16944,
+    "directly": 0.16944,
+    "drawing": 0.16944,
+    "making": 0.16944,
+    "math": 0.16944,
+    "readable": 0.16944,
+    "scales": 0.16944,
+    "end": 0.13608
+   }
+  },
+  {
+   "id": "api-rest",
+   "title": "Designing REST APIs",
+   "category": "back-end",
+   "tags": [
+    "rest",
+    "http",
+    "api-design"
+   ],
+   "description": "Resources, verbs, status codes, pagination, and versioning \u2014 designing an interface that stays predictable as it grows.",
+   "vector": {
+    "rest": 0.45565,
+    "designing": 0.41668,
+    "apis": 0.32769,
+    "api-design": 0.29565,
+    "http": 0.26438,
+    "back": 0.18873,
+    "codes": 0.17461,
+    "interface": 0.17461,
+    "pagination": 0.17461,
+    "predictable": 0.17461,
+    "resources": 0.17461,
+    "status": 0.17461,
+    "stays": 0.17461,
+    "verbs": 0.17461,
+    "versioning": 0.17461,
+    "grows": 0.15614,
+    "end": 0.14024
+   }
+  },
+  {
+   "id": "api-auth",
+   "title": "Authentication and Sessions",
+   "category": "back-end",
+   "tags": [
+    "jwt",
+    "oauth",
+    "sessions",
+    "security"
+   ],
+   "description": "Password hashing, session cookies versus JSON Web Tokens, refresh flows, and the tradeoffs between them.",
+   "vector": {
+    "sessions": 0.48367,
+    "authentication": 0.38899,
+    "jwt": 0.31383,
+    "oauth": 0.31383,
+    "back": 0.20033,
+    "security": 0.20033,
+    "cookies": 0.18536,
+    "flows": 0.18536,
+    "json": 0.18536,
+    "password": 0.18536,
+    "refresh": 0.18536,
+    "session": 0.18536,
+    "tradeoffs": 0.18536,
+    "hashing": 0.16575,
+    "tokens": 0.16575,
+    "end": 0.14887,
+    "web": 0.14105
+   }
+  },
+  {
+   "id": "api-sql",
+   "title": "Relational Database Design",
+   "category": "back-end",
+   "tags": [
+    "sql",
+    "schema",
+    "normalization"
+   ],
+   "description": "Tables, keys, relationships, normalization, and the indexes that keep queries fast as data grows.",
+   "vector": {
+    "database": 0.39513,
+    "relational": 0.39513,
+    "normalization": 0.35333,
+    "schema": 0.31879,
+    "design": 0.30068,
+    "sql": 0.28507,
+    "back": 0.2035,
+    "relationships": 0.18828,
+    "tables": 0.18828,
+    "fast": 0.16836,
+    "grows": 0.16836,
+    "indexes": 0.16836,
+    "queries": 0.16836,
+    "end": 0.15122,
+    "data": 0.14327,
+    "keys": 0.14327
+   }
+  },
+  {
+   "id": "api-query",
+   "title": "Query Optimization",
+   "category": "back-end",
+   "tags": [
+    "sql",
+    "indexes",
+    "performance"
+   ],
+   "description": "Reading query plans, choosing indexes, avoiding N+1 access patterns, and measuring before optimizing.",
+   "vector": {
+    "query": 0.417,
+    "optimization": 0.41011,
+    "indexes": 0.36673,
+    "sql": 0.29587,
+    "performance": 0.25178,
+    "back": 0.21121,
+    "avoiding": 0.19542,
+    "n+1": 0.19542,
+    "optimizing": 0.19542,
+    "plans": 0.19542,
+    "reading": 0.19542,
+    "choosing": 0.17475,
+    "patterns": 0.17475,
+    "access": 0.16008,
+    "measuring": 0.16008,
+    "end": 0.15695
+   }
+  },
+  {
+   "id": "api-async",
+   "title": "Concurrency and Async Programming",
+   "category": "back-end",
+   "tags": [
+    "async",
+    "concurrency",
+    "python"
+   ],
+   "description": "Event loops, coroutines, thread pools, and when concurrency actually makes a service faster instead of just more complicated.",
+   "vector": {
+    "concurrency": 0.49591,
+    "async": 0.46352,
+    "programming": 0.37278,
+    "python": 0.26895,
+    "back": 0.19199,
+    "complicated": 0.17763,
+    "coroutines": 0.17763,
+    "event": 0.17763,
+    "faster": 0.17763,
+    "loops": 0.17763,
+    "pools": 0.17763,
+    "service": 0.17763,
+    "thread": 0.17763,
+    "end": 0.14267,
+    "actually": 0.13517
+   }
+  },
+  {
+   "id": "api-cache",
+   "title": "Caching Strategies",
+   "category": "back-end",
+   "tags": [
+    "caching",
+    "redis",
+    "performance"
+   ],
+   "description": "Cache keys, expiry, invalidation, and rate-limit-friendly caching for third-party APIs.",
+   "vector": {
+    "caching": 0.55928,
+    "strategies": 0.42042,
+    "redis": 0.33919,
+    "performance": 0.25811,
+    "back": 0.21652,
+    "cache": 0.20033,
+    "expiry": 0.20033,
+    "invalidation": 0.20033,
+    "rate-limit-friendly": 0.20033,
+    "third-party": 0.20033,
+    "apis": 0.17914,
+    "end": 0.1609,
+    "keys": 0.15245
+   }
+  },
+  {
+   "id": "api-test",
+   "title": "Testing Web Services",
+   "category": "back-end",
+   "tags": [
+    "testing",
+    "pytest",
+    "integration"
+   ],
+   "description": "Unit versus integration tests, test databases, fixtures, and writing tests that fail for the right reasons.",
+   "vector": {
+    "testing": 0.39364,
+    "services": 0.38646,
+    "integration": 0.34558,
+    "pytest": 0.31179,
+    "web": 0.29408,
+    "tests": 0.27881,
+    "back": 0.19903,
+    "databases": 0.18415,
+    "fail": 0.18415,
+    "fixtures": 0.18415,
+    "reasons": 0.18415,
+    "right": 0.18415,
+    "unit": 0.18415,
+    "test": 0.16467,
+    "writing": 0.15085,
+    "end": 0.1479
+   }
+  },
+  {
+   "id": "sec-owasp",
+   "title": "OWASP Top Ten",
+   "category": "security",
+   "tags": [
+    "owasp",
+    "vulnerabilities",
+    "web-security"
+   ],
+   "description": "The most common classes of web vulnerability \u2014 injection, broken access control, misconfiguration \u2014 and the defenses for each.",
+   "vector": {
+    "owasp": 0.47348,
+    "ten": 0.38079,
+    "top": 0.38079,
+    "vulnerabilities": 0.30722,
+    "web-security": 0.27472,
+    "security": 0.19611,
+    "broken": 0.18145,
+    "classes": 0.18145,
+    "common": 0.18145,
+    "misconfiguration": 0.18145,
+    "vulnerability": 0.18145,
+    "defenses": 0.16226,
+    "injection": 0.16226,
+    "access": 0.14864,
+    "control": 0.13808,
+    "web": 0.13808
+   }
+  },
+  {
+   "id": "sec-headers",
+   "title": "HTTP Security Headers",
+   "category": "security",
+   "tags": [
+    "headers",
+    "csp",
+    "hsts",
+    "web-security"
+   ],
+   "description": "Content Security Policy, HSTS, frame options, and referrer policy: what each header defends against and how weak values undermine it.",
+   "vector": {
+    "headers": 0.43529,
+    "hsts": 0.35008,
+    "http": 0.31305,
+    "security": 0.29728,
+    "csp": 0.28244,
+    "policy": 0.28244,
+    "web-security": 0.25256,
+    "against": 0.16681,
+    "content": 0.16681,
+    "defends": 0.16681,
+    "frame": 0.16681,
+    "header": 0.16681,
+    "options": 0.16681,
+    "referrer": 0.16681,
+    "undermine": 0.16681,
+    "values": 0.16681,
+    "weak": 0.16681
+   }
+  },
+  {
+   "id": "sec-crypto",
+   "title": "Applied Cryptography Basics",
+   "category": "security",
+   "tags": [
+    "hashing",
+    "encryption",
+    "passwords"
+   ],
+   "description": "Hashing versus encryption, salts, key derivation functions, and why fast hashes are the wrong tool for passwords.",
+   "vector": {
+    "applied": 0.36368,
+    "cryptography": 0.36368,
+    "encryption": 0.36368,
+    "passwords": 0.36368,
+    "basics": 0.32521,
+    "hashing": 0.32521,
+    "security": 0.1873,
+    "derivation": 0.17329,
+    "hashes": 0.17329,
+    "key": 0.17329,
+    "salts": 0.17329,
+    "tool": 0.17329,
+    "wrong": 0.17329,
+    "fast": 0.15496,
+    "functions": 0.14196
+   }
+  },
+  {
+   "id": "sec-secrets",
+   "title": "Secrets Management",
+   "category": "security",
+   "tags": [
+    "secrets",
+    "credentials",
+    "scanning"
+   ],
+   "description": "Keeping keys out of source control, rotating credentials, and scanning repositories for tokens that leaked anyway.",
+   "vector": {
+    "secrets": 0.49082,
+    "credentials": 0.39474,
+    "scanning": 0.39474,
+    "management": 0.35298,
+    "security": 0.20329,
+    "anyway": 0.18809,
+    "keeping": 0.18809,
+    "leaked": 0.18809,
+    "repositories": 0.18809,
+    "rotating": 0.18809,
+    "source": 0.18809,
+    "tokens": 0.1682,
+    "control": 0.14313,
+    "keys": 0.14313
+   }
+  },
+  {
+   "id": "sec-authz",
+   "title": "Access Control and Authorization",
+   "category": "security",
+   "tags": [
+    "authorization",
+    "rbac",
+    "security"
+   ],
+   "description": "Roles versus permissions, enforcing ownership on every query, and the insecure-direct-object-reference bugs that follow when you don't.",
+   "vector": {
+    "authorization": 0.51273,
+    "access": 0.33779,
+    "rbac": 0.33269,
+    "control": 0.31379,
+    "security": 0.29931,
+    "bugs": 0.19649,
+    "don": 0.19649,
+    "enforcing": 0.19649,
+    "insecure-direct-object-reference": 0.19649,
+    "ownership": 0.19649,
+    "permissions": 0.19649,
+    "follow": 0.17571,
+    "query": 0.17571,
+    "roles": 0.17571
+   }
+  },
+  {
+   "id": "sec-threat",
+   "title": "Threat Modeling",
+   "category": "security",
+   "tags": [
+    "threat-modeling",
+    "risk",
+    "design"
+   ],
+   "description": "Mapping trust boundaries, enumerating what an attacker would try, and prioritizing defenses by realistic risk.",
+   "vector": {
+    "modeling": 0.39869,
+    "risk": 0.39869,
+    "threat": 0.39869,
+    "threat-modeling": 0.32166,
+    "design": 0.24477,
+    "security": 0.20533,
+    "attacker": 0.18998,
+    "boundaries": 0.18998,
+    "enumerating": 0.18998,
+    "mapping": 0.18998,
+    "prioritizing": 0.18998,
+    "realistic": 0.18998,
+    "trust": 0.18998,
+    "try": 0.18998,
+    "defenses": 0.16988
+   }
+  },
+  {
+   "id": "eng-git",
+   "title": "Version Control with Git",
+   "category": "software-engineering",
+   "tags": [
+    "git",
+    "branching",
+    "collaboration"
+   ],
+   "description": "Branches, merges, rebases, and writing a history that a reviewer can actually follow.",
+   "vector": {
+    "git": 0.48819,
+    "version": 0.39262,
+    "branching": 0.31676,
+    "control": 0.29877,
+    "collaboration": 0.28326,
+    "engineering": 0.21324,
+    "software": 0.21324,
+    "branches": 0.18709,
+    "history": 0.18709,
+    "merges": 0.18709,
+    "rebases": 0.18709,
+    "reviewer": 0.18709,
+    "follow": 0.1673,
+    "writing": 0.15326,
+    "actually": 0.14236
+   }
+  },
+  {
+   "id": "eng-review",
+   "title": "Code Review and Readability",
+   "category": "software-engineering",
+   "tags": [
+    "code-review",
+    "readability",
+    "collaboration"
+   ],
+   "description": "Naming, small functions, and reviewing for correctness and clarity instead of personal style preferences.",
+   "vector": {
+    "readability": 0.4624,
+    "code": 0.37188,
+    "review": 0.37188,
+    "code-review": 0.30003,
+    "collaboration": 0.2683,
+    "engineering": 0.20198,
+    "software": 0.20198,
+    "clarity": 0.1772,
+    "correctness": 0.1772,
+    "naming": 0.1772,
+    "personal": 0.1772,
+    "preferences": 0.1772,
+    "reviewing": 0.1772,
+    "style": 0.1772,
+    "small": 0.15846,
+    "functions": 0.14516
+   }
+  },
+  {
+   "id": "eng-ci",
+   "title": "Continuous Integration Pipelines",
+   "category": "software-engineering",
+   "tags": [
+    "ci",
+    "automation",
+    "testing"
+   ],
+   "description": "Running tests, linting, and builds automatically on every push so problems surface before they reach a teammate.",
+   "vector": {
+    "continuous": 0.36992,
+    "pipelines": 0.36992,
+    "integration": 0.33079,
+    "automation": 0.29845,
+    "ci": 0.29845,
+    "testing": 0.24448,
+    "engineering": 0.20091,
+    "software": 0.20091,
+    "automatically": 0.17627,
+    "builds": 0.17627,
+    "linting": 0.17627,
+    "push": 0.17627,
+    "reach": 0.17627,
+    "running": 0.17627,
+    "surface": 0.17627,
+    "teammate": 0.17627,
+    "problems": 0.15762,
+    "tests": 0.15762
+   }
+  },
+  {
+   "id": "eng-debug",
+   "title": "Debugging and Profiling",
+   "category": "software-engineering",
+   "tags": [
+    "debugging",
+    "profiling",
+    "tooling"
+   ],
+   "description": "Reproducing a bug reliably, bisecting to the change that caused it, and profiling before guessing at performance fixes.",
+   "vector": {
+    "profiling": 0.5216,
+    "debugging": 0.48754,
+    "tooling": 0.31634,
+    "engineering": 0.21295,
+    "software": 0.21295,
+    "bisecting": 0.18684,
+    "bug": 0.18684,
+    "caused": 0.18684,
+    "change": 0.18684,
+    "fixes": 0.18684,
+    "guessing": 0.18684,
+    "reliably": 0.18684,
+    "reproducing": 0.18684,
+    "performance": 0.14217
+   }
+  },
+  {
+   "id": "eng-arch",
+   "title": "Software Design Patterns",
+   "category": "software-engineering",
+   "tags": [
+    "patterns",
+    "architecture",
+    "oop"
+   ],
+   "description": "Layering, dependency injection, MVC, and the patterns worth reaching for when a codebase starts to sprawl.",
+   "vector": {
+    "patterns": 0.47433,
+    "software": 0.33376,
+    "architecture": 0.3217,
+    "oop": 0.3217,
+    "design": 0.30342,
+    "engineering": 0.21656,
+    "codebase": 0.19,
+    "dependency": 0.19,
+    "layering": 0.19,
+    "mvc": 0.19,
+    "reaching": 0.19,
+    "sprawl": 0.19,
+    "starts": 0.19,
+    "worth": 0.19,
+    "injection": 0.1699
+   }
+  },
+  {
+   "id": "eng-docs",
+   "title": "Technical Writing for Engineers",
+   "category": "software-engineering",
+   "tags": [
+    "documentation",
+    "writing",
+    "communication"
+   ],
+   "description": "READMEs, design docs, and commit messages that explain the why so the next reader does not have to reverse-engineer it.",
+   "vector": {
+    "writing": 0.3884,
+    "engineers": 0.38132,
+    "technical": 0.38132,
+    "communication": 0.30765,
+    "documentation": 0.30765,
+    "engineering": 0.2071,
+    "software": 0.2071,
+    "commit": 0.1817,
+    "docs": 0.1817,
+    "explain": 0.1817,
+    "messages": 0.1817,
+    "next": 0.1817,
+    "reader": 0.1817,
+    "readmes": 0.1817,
+    "reverse-engineer": 0.1817,
+    "design": 0.13827
+   }
+  }
+ ]
+}

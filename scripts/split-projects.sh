@@ -2,7 +2,7 @@
 # Promote each project in projects/ to its own standalone GitHub repository.
 #
 # Usage:
-#   ./scripts/split-projects.sh              # all three projects
+#   ./scripts/split-projects.sh              # all six projects
 #   ./scripts/split-projects.sh taskflow     # just one
 #
 # Requires the GitHub CLI (`gh`) to be installed and authenticated:
@@ -14,7 +14,11 @@
 set -euo pipefail
 
 OWNER="smahden"
-if [[ $# -gt 0 ]]; then PROJECTS=("$@"); else PROJECTS=(taskflow shoplite devmetrics); fi
+if [[ $# -gt 0 ]]; then
+  PROJECTS=("$@")
+else
+  PROJECTS=(recolab sentinel uikit taskflow shoplite devmetrics)
+fi
 
 REPO_ROOT="$(git -C "$(dirname "$0")/.." rev-parse --show-toplevel)"
 
@@ -34,9 +38,10 @@ for project in "${PROJECTS[@]}"; do
   }
 
   tmp="$(mktemp -d)"
-  # rsync respects our exclusions; node_modules/.venv/db files never leave home.
-  rsync -a --exclude node_modules --exclude .venv --exclude '*.db' \
-    --exclude '.pytest_cache' --exclude __pycache__ "$src/" "$tmp/"
+  # tar streams the tree minus build junk; node_modules/.venv/db files never leave home.
+  tar -c -C "$src" \
+    --exclude node_modules --exclude .venv --exclude '*.db' \
+    --exclude .pytest_cache --exclude __pycache__ . | tar -x -C "$tmp"
 
   git -C "$tmp" init -b main -q
   git -C "$tmp" add -A

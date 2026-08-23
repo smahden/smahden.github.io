@@ -19,8 +19,9 @@ Full-stack software engineer and Computer Science graduate who designs, builds, 
 - **Front End:** React (Vite), Sass, responsive design, single-page apps, component-based UI, Figma
 - **Back End & APIs:** Node.js, Express, FastAPI, PHP, RESTful APIs, CRUD, JWT auth, data validation
 - **Databases:** MySQL, SQLite, SQLAlchemy, relational schema design, query optimization
-- **AI & CS Foundations:** content-based filtering, recommendation systems, data analytics, data structures & algorithms, OOP, MVC
-- **Cloud, Tools & Testing:** Microsoft Azure, Git/GitHub, GitHub Actions (CI), Jest, Pytest, Agile/SDLC
+- **ML & AI:** content-based filtering, recommendation systems, TF-IDF, cosine similarity, ranking metrics, data analytics
+- **Security:** HTTP security headers (CSP/HSTS), secret scanning, password hashing and entropy, access control, OWASP Top Ten
+- **Cloud, Tools & Testing:** Microsoft Azure, Git/GitHub, GitHub Actions (CI), Jest, Pytest, Playwright, Agile/SDLC
 
 ---
 
@@ -51,6 +52,15 @@ Full-stack software engineer and Computer Science graduate who designs, builds, 
 
 ### IDA — Adaptive Grade 4 Mathematics Software (Thesis)
 Full-stack adaptive learning platform teaching Order of Operations (PEMDAS): assesses each student's performance and uses content-based filtering to generate personalized learning paths. Designed in Figma; deployed as a live web app. *React (Vite), Sass, PHP, MySQL.*
+
+### RecoLab — Content-Based Recommendation Engine · [code](https://github.com/smahden/portfolio/tree/main/projects/recolab)
+Recommendation engine written from scratch — TF-IDF vectorization, cosine similarity, user taste profiles, and ranking metrics (precision@k, MRR, NDCG) with no numpy or scikit-learn; browser demo recomputes the same similarity in JavaScript and matches the Python CLI exactly. 56 pytest tests. *Python, JavaScript.*
+
+### Sentinel — Security Audit Toolkit · [code](https://github.com/smahden/portfolio/tree/main/projects/sentinel)
+Defensive tooling that grades HTTP security headers A–F (including present-but-weak values), scans source trees for committed credentials with redaction and false-positive filtering, and scores password strength by entropy plus guessability patterns. 90 pytest tests; exits non-zero for CI. *Python.*
+
+### UIKit — Accessible Component Library · [code](https://github.com/smahden/portfolio/tree/main/projects/uikit)
+Seven dependency-free UI components — modal with focus trap and restore, tabs with roving tabindex, `aria-activedescendant` combobox, live-region toasts, and form validation via `aria-describedby`. 27 Playwright tests drive real key presses and assert focus and ARIA state. *JavaScript, ARIA, Playwright.*
 
 ### TaskFlow — Kanban Task Manager · [code](https://github.com/smahden/portfolio/tree/main/projects/taskflow)
 Full-stack Kanban board with JWT auth, per-user ownership enforcement, and drag-and-drop whose card positions are renumbered transactionally server-side; 22 Jest + Supertest API tests. *Node.js, Express, SQLite.*
