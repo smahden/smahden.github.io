@@ -116,7 +116,7 @@ def analyze(password: str) -> PasswordStrength:
     elif _base_word(password) in COMMON_PASSWORDS:
         score = min(score, 1)
         warnings.append(
-            "This is a common password with digits or symbols added — a pattern "
+            "This is a common password with digits or symbols added, a pattern "
             "cracking tools try first."
         )
 
@@ -134,7 +134,7 @@ def analyze(password: str) -> PasswordStrength:
         suggestions.append("Mix in uppercase letters, digits, or symbols.")
     if re.fullmatch(r"\d+", password):
         score = 0
-        warnings.append("Digits only — trivially brute-forced.")
+        warnings.append("Digits only, which is trivially brute-forced.")
 
     if score >= 3 and not warnings:
         suggestions.append("Store it in a password manager and never reuse it.")

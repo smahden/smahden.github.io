@@ -1,6 +1,6 @@
 {
  "generated_by": "recolab.export",
- "vocabulary_size": 416,
+ "vocabulary_size": 418,
  "items": [
   {
    "id": "ml-101",
@@ -108,7 +108,7 @@
     "evaluation",
     "ranking"
    ],
-   "description": "Precision and recall at k, mean reciprocal rank, average precision, and NDCG \u2014 how to tell whether a ranking model is actually any good.",
+   "description": "Precision and recall at k, mean reciprocal rank, average precision, and NDCG: how to tell whether a ranking model is actually any good.",
    "vector": {
     "evaluating": 0.34075,
     "ranked": 0.34075,
@@ -407,7 +407,7 @@
     "charts",
     "dataviz"
    ],
-   "description": "Drawing bars, arcs, and axes directly in SVG \u2014 coordinate math, scales, and making charts readable and accessible.",
+   "description": "Drawing bars, arcs, and axes directly in SVG: coordinate math, scales, and making charts readable and accessible.",
    "vector": {
     "svg": 0.47303,
     "charts": 0.35558,
@@ -438,7 +438,7 @@
     "http",
     "api-design"
    ],
-   "description": "Resources, verbs, status codes, pagination, and versioning \u2014 designing an interface that stays predictable as it grows.",
+   "description": "Resources, verbs, status codes, pagination, and versioning. Designing an interface that stays predictable as it grows.",
    "vector": {
     "rest": 0.45565,
     "designing": 0.41668,
@@ -640,24 +640,26 @@
     "vulnerabilities",
     "web-security"
    ],
-   "description": "The most common classes of web vulnerability \u2014 injection, broken access control, misconfiguration \u2014 and the defenses for each.",
+   "description": "The most common classes of web vulnerability, including injection, broken access control and misconfiguration, plus the defenses for each.",
    "vector": {
-    "owasp": 0.47348,
-    "ten": 0.38079,
-    "top": 0.38079,
-    "vulnerabilities": 0.30722,
-    "web-security": 0.27472,
-    "security": 0.19611,
-    "broken": 0.18145,
-    "classes": 0.18145,
-    "common": 0.18145,
-    "misconfiguration": 0.18145,
-    "vulnerability": 0.18145,
-    "defenses": 0.16226,
-    "injection": 0.16226,
-    "access": 0.14864,
-    "control": 0.13808,
-    "web": 0.13808
+    "owasp": 0.45862,
+    "ten": 0.36884,
+    "top": 0.36884,
+    "vulnerabilities": 0.29758,
+    "web-security": 0.2661,
+    "security": 0.18996,
+    "broken": 0.17575,
+    "classes": 0.17575,
+    "common": 0.17575,
+    "including": 0.17575,
+    "misconfiguration": 0.17575,
+    "plus": 0.17575,
+    "vulnerability": 0.17575,
+    "defenses": 0.15716,
+    "injection": 0.15716,
+    "access": 0.14397,
+    "control": 0.13374,
+    "web": 0.13374
    }
   },
   {
