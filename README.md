@@ -1,10 +1,8 @@
 # Mahden Saleh — Software Engineer Portfolio
 
-A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and JavaScript** — no frameworks, no build step, nothing to install. Served by **GitHub Pages** directly from this repository's `main` branch.
+A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and JavaScript** — no frameworks, no build step, nothing to install. It deploys automatically to **GitHub Pages** on every push.
 
 **Live site:** https://smahden.github.io/
-
-> This is the deployed copy of [smahden/Portfolio](https://github.com/smahden/Portfolio) — make content edits there (or here, and mirror them) so the two stay in sync.
 
 ## Features
 
@@ -33,8 +31,14 @@ A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and 
 │   ├── shoplite/                 # Back End    — e-commerce API, 22 pytest tests
 │   └── devmetrics/               # Front End   — GitHub analytics, zero deps
 ├── scripts/split-projects.sh     # Promote each project to its own GitHub repo
-└── .github/workflows/            # deploy.yml (Pages) + ci.yml (all five test suites)
+└── .github/workflows/ci.yml      # Runs all five project test suites on every push
 ```
+
+## Deployment
+
+The live site is served from the **[smahden/smahden.github.io](https://github.com/smahden/smahden.github.io)** repository, which GitHub Pages publishes automatically from its `main` branch — that is what https://smahden.github.io/ serves. This repository is the source of truth for the content; copy changes across (or edit there directly) and Pages redeploys within a minute.
+
+This repo deliberately has **no Pages workflow**. Publishing a second copy at `/Portfolio/` would need Pages enabled here first (**Settings → Pages → Source: GitHub Actions**), which only a repo admin can do — a workflow token is not permitted to turn it on, so an automated deploy job here just fails on every push.
 
 ## The projects
 
