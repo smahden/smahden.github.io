@@ -1,0 +1,15 @@
+{
+  "name": "uikit-accessible",
+  "version": "1.0.0",
+  "description": "Accessible UI components in plain JavaScript — no framework, no build step, no dependencies.",
+  "scripts": {
+    "test": "node tests/keyboard.test.mjs",
+    "start": "python3 -m http.server 8080"
+  },
+  "keywords": ["accessibility", "a11y", "components", "vanilla-js", "aria"],
+  "author": "Mahden Saleh <msmahden@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "playwright": "^1.50.0"
+  }
+}

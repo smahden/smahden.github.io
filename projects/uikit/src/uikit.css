@@ -1,0 +1,236 @@
+/* UIKit — component styles. Theming is entirely custom properties. */
+
+:root {
+  --uikit-bg: #f6f8fc;
+  --uikit-surface: #ffffff;
+  --uikit-raised: #eef2f9;
+  --uikit-border: #d8e0ed;
+  --uikit-text: #26324a;
+  --uikit-strong: #0f172a;
+  --uikit-muted: #64748b;
+  --uikit-accent: #6366f1;
+  --uikit-accent-contrast: #ffffff;
+  --uikit-danger: #dc2626;
+  --uikit-success: #059669;
+  --uikit-radius: 10px;
+  --uikit-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.35);
+}
+
+:root[data-theme="dark"] {
+  --uikit-bg: #0b1120;
+  --uikit-surface: #141d33;
+  --uikit-raised: #1b2745;
+  --uikit-border: #26334f;
+  --uikit-text: #cfd8ee;
+  --uikit-strong: #f2f6ff;
+  --uikit-muted: #8593b3;
+  --uikit-accent: #818cf8;
+  --uikit-accent-contrast: #0b1120;
+  --uikit-danger: #f87171;
+  --uikit-success: #34d399;
+  --uikit-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --uikit-bg: #0b1120;
+    --uikit-surface: #141d33;
+    --uikit-raised: #1b2745;
+    --uikit-border: #26334f;
+    --uikit-text: #cfd8ee;
+    --uikit-strong: #f2f6ff;
+    --uikit-muted: #8593b3;
+    --uikit-accent: #818cf8;
+    --uikit-accent-contrast: #0b1120;
+    --uikit-danger: #f87171;
+    --uikit-success: #34d399;
+    --uikit-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* A single visible focus style for every component — never removed. */
+.uikit :focus-visible,
+.uikit-btn:focus-visible,
+[data-uikit] :focus-visible {
+  outline: 3px solid var(--uikit-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.uikit-btn {
+  font: inherit;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  background: var(--uikit-accent);
+  color: var(--uikit-accent-contrast);
+  transition: filter 0.15s;
+}
+.uikit-btn:hover { filter: brightness(1.08); }
+.uikit-btn--ghost {
+  background: transparent;
+  border-color: var(--uikit-border);
+  color: var(--uikit-text);
+}
+.uikit-btn--ghost:hover { background: var(--uikit-raised); }
+
+/* ------------------------------------------------------------------ Modal */
+.uikit-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 12, 24, 0.62);
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+  z-index: 100;
+}
+.uikit-modal[hidden] { display: none; }
+.uikit-modal-box {
+  background: var(--uikit-surface);
+  border: 1px solid var(--uikit-border);
+  border-radius: 14px;
+  box-shadow: var(--uikit-shadow);
+  padding: 1.6rem;
+  width: min(460px, 100%);
+}
+.uikit-modal-box h2 { color: var(--uikit-strong); margin-bottom: 0.6rem; font-size: 1.15rem; }
+.uikit-modal-box p { color: var(--uikit-muted); margin-bottom: 1.2rem; }
+.uikit-modal-actions { display: flex; gap: 0.6rem; justify-content: flex-end; }
+
+/* ------------------------------------------------------------------- Tabs */
+.uikit-tabs-list {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--uikit-border);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.uikit-tab {
+  font: inherit;
+  font-weight: 600;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--uikit-muted);
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+.uikit-tab:hover { color: var(--uikit-text); }
+.uikit-tab[aria-selected="true"] { color: var(--uikit-accent); border-bottom-color: var(--uikit-accent); }
+.uikit-panel { color: var(--uikit-text); }
+.uikit-panel[hidden] { display: none; }
+
+/* -------------------------------------------------------------- Accordion */
+.uikit-accordion { border: 1px solid var(--uikit-border); border-radius: var(--uikit-radius); overflow: hidden; }
+.uikit-accordion-item + .uikit-accordion-item { border-top: 1px solid var(--uikit-border); }
+.uikit-accordion-trigger {
+  font: inherit;
+  font-weight: 600;
+  width: 100%;
+  text-align: left;
+  background: var(--uikit-surface);
+  border: 0;
+  color: var(--uikit-strong);
+  padding: 0.85rem 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.uikit-accordion-trigger:hover { background: var(--uikit-raised); }
+.uikit-accordion-trigger::after {
+  content: "⌄";
+  color: var(--uikit-muted);
+  transition: transform 0.2s;
+}
+.uikit-accordion-trigger[aria-expanded="true"]::after { transform: rotate(180deg); }
+.uikit-accordion-panel { padding: 0 1rem 1rem; color: var(--uikit-muted); font-size: 0.92rem; }
+
+/* --------------------------------------------------------------- Combobox */
+.uikit-combobox { position: relative; }
+.uikit-input {
+  font: inherit;
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--uikit-border);
+  border-radius: 8px;
+  background: var(--uikit-surface);
+  color: var(--uikit-text);
+}
+.uikit-listbox {
+  position: absolute;
+  z-index: 20;
+  inset-inline: 0;
+  margin-top: 0.3rem;
+  max-height: 220px;
+  overflow-y: auto;
+  list-style: none;
+  background: var(--uikit-surface);
+  border: 1px solid var(--uikit-border);
+  border-radius: 8px;
+  box-shadow: var(--uikit-shadow);
+  padding: 0.25rem;
+}
+.uikit-listbox[hidden] { display: none; }
+.uikit-listbox li { padding: 0.45rem 0.6rem; border-radius: 6px; cursor: pointer; font-size: 0.92rem; }
+.uikit-listbox li.is-active { background: var(--uikit-accent); color: var(--uikit-accent-contrast); }
+.uikit-listbox li[aria-selected="true"]::after { content: " ✓"; color: var(--uikit-success); }
+
+/* ------------------------------------------------------------------ Toast */
+.uikit-toasts {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 200;
+  max-width: min(340px, calc(100vw - 2rem));
+}
+.uikit-toast {
+  background: var(--uikit-surface);
+  border: 1px solid var(--uikit-border);
+  border-left: 4px solid var(--uikit-accent);
+  border-radius: 8px;
+  box-shadow: var(--uikit-shadow);
+  padding: 0.7rem 2.2rem 0.7rem 0.9rem;
+  color: var(--uikit-text);
+  font-size: 0.9rem;
+  position: relative;
+}
+.uikit-toast--success { border-left-color: var(--uikit-success); }
+.uikit-toast--danger { border-left-color: var(--uikit-danger); }
+.uikit-toast-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.4rem;
+  background: none;
+  border: 0;
+  color: var(--uikit-muted);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.25rem;
+}
+
+/* ------------------------------------------------------------------- Form */
+.uikit-field { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 1rem; }
+.uikit-field label { font-weight: 600; font-size: 0.88rem; color: var(--uikit-strong); }
+.uikit-input[aria-invalid="true"] { border-color: var(--uikit-danger); }
+.uikit-error { color: var(--uikit-danger); font-size: 0.82rem; min-height: 1.1em; }
+
+.uikit-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

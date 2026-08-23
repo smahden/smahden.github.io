@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-label="Employee Management System">
+  <defs>
+    <linearGradient id="ems-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141d33"/>
+      <stop offset="100%" stop-color="#12303f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="url(#ems-bg)"/>
+
+  <!-- stylized record table -->
+  <g opacity="0.5">
+    <rect x="700" y="150" width="430" height="70" rx="10" fill="#5eead4" fill-opacity="0.22"/>
+    <rect x="700" y="240" width="430" height="60" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="700" y="316" width="430" height="60" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="700" y="392" width="430" height="60" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="700" y="468" width="430" height="60" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+    <g fill="#5eead4" opacity="0.75">
+      <circle cx="735" cy="270" r="14"/>
+      <circle cx="735" cy="346" r="14"/>
+      <circle cx="735" cy="422" r="14"/>
+      <circle cx="735" cy="498" r="14"/>
+    </g>
+    <g fill="#8593b3">
+      <rect x="770" y="262" width="200" height="16" rx="8"/>
+      <rect x="770" y="338" width="240" height="16" rx="8"/>
+      <rect x="770" y="414" width="170" height="16" rx="8"/>
+      <rect x="770" y="490" width="215" height="16" rx="8"/>
+    </g>
+  </g>
+
+  <text x="90" y="200" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="42" fill="#8593b3" font-weight="600">ToonCity internship</text>
+  <text x="90" y="300" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="72" fill="#f2f6ff" font-weight="800">Employee</text>
+  <text x="90" y="386" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="72" fill="#f2f6ff" font-weight="800">Management</text>
+  <text x="90" y="452" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="40" fill="#cfd8ee" font-weight="500">RESTful CRUD · relational schema</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, monospace" font-size="30" fill="#5eead4">
+    <rect x="90" y="502" width="120" height="52" rx="26" fill="#5eead4" fill-opacity="0.14"/>
+    <text x="115" y="537">PHP</text>
+    <rect x="228" y="502" width="160" height="52" rx="26" fill="#5eead4" fill-opacity="0.14"/>
+    <text x="253" y="537">MySQL</text>
+    <rect x="406" y="502" width="130" height="52" rx="26" fill="#5eead4" fill-opacity="0.14"/>
+    <text x="431" y="537">Sass</text>
+  </g>
+</svg>

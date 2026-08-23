@@ -1,0 +1,46 @@
+/* Demo page chrome — the components themselves are styled by src/uikit.css. */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--uikit-bg);
+  color: var(--uikit-text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.masthead { width: min(880px, 92%); margin: 3rem auto 2rem; }
+.masthead-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.8rem; }
+.masthead h1 { color: var(--uikit-strong); font-size: 1.9rem; }
+.masthead p { color: var(--uikit-muted); max-width: 62ch; }
+.masthead strong { color: var(--uikit-text); }
+
+main { width: min(880px, 92%); margin: 0 auto 3rem; display: grid; gap: 1.4rem; }
+
+.demo {
+  background: var(--uikit-surface);
+  border: 1px solid var(--uikit-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+.demo h2 { color: var(--uikit-strong); font-size: 1.05rem; margin-bottom: 0.35rem; }
+.demo-note { color: var(--uikit-muted); font-size: 0.87rem; margin-bottom: 1.1rem; max-width: 68ch; }
+.demo code {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 0.85em;
+  background: var(--uikit-raised);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.button-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid var(--uikit-border);
+  color: var(--uikit-muted);
+  font-size: 0.85rem;
+}
+footer a { color: var(--uikit-accent); }
