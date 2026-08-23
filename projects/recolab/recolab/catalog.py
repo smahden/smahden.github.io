@@ -20,7 +20,7 @@ RAW: tuple[tuple[str, str, str, tuple[str, ...], str], ...] = (
      "user taste profile from items the user already liked."),
     ("ml-eval", "Evaluating Ranked Results", "machine-learning",
      ("metrics", "evaluation", "ranking"),
-     "Precision and recall at k, mean reciprocal rank, average precision, and NDCG — "
+     "Precision and recall at k, mean reciprocal rank, average precision, and NDCG: "
      "how to tell whether a ranking model is actually any good."),
     ("ml-nlp", "Natural Language Processing Basics", "machine-learning",
      ("nlp", "tokenization", "embeddings"),
@@ -61,12 +61,12 @@ RAW: tuple[tuple[str, str, str, tuple[str, ...], str], ...] = (
      "measuring what users actually experience."),
     ("web-charts", "Data Visualization with SVG", "front-end",
      ("svg", "charts", "dataviz"),
-     "Drawing bars, arcs, and axes directly in SVG — coordinate math, scales, "
+     "Drawing bars, arcs, and axes directly in SVG: coordinate math, scales, "
      "and making charts readable and accessible."),
 
     ("api-rest", "Designing REST APIs", "back-end",
      ("rest", "http", "api-design"),
-     "Resources, verbs, status codes, pagination, and versioning — designing an "
+     "Resources, verbs, status codes, pagination, and versioning. Designing an "
      "interface that stays predictable as it grows."),
     ("api-auth", "Authentication and Sessions", "back-end",
      ("jwt", "oauth", "sessions", "security"),
@@ -95,8 +95,8 @@ RAW: tuple[tuple[str, str, str, tuple[str, ...], str], ...] = (
 
     ("sec-owasp", "OWASP Top Ten", "security",
      ("owasp", "vulnerabilities", "web-security"),
-     "The most common classes of web vulnerability — injection, broken access "
-     "control, misconfiguration — and the defenses for each."),
+     "The most common classes of web vulnerability, including injection, broken "
+     "access control and misconfiguration, plus the defenses for each."),
     ("sec-headers", "HTTP Security Headers", "security",
      ("headers", "csp", "hsts", "web-security"),
      "Content Security Policy, HSTS, frame options, and referrer policy: what each "

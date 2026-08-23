@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UIKit — Accessible Components</title>
+  <title>UIKit: Accessible Components</title>
   <meta name="description" content="A dependency-free library of accessible UI components: modal, tabs, accordion, combobox, toasts, and form validation." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>" />
   <link rel="stylesheet" href="src/uikit.css" />
@@ -18,8 +18,8 @@
       </button>
     </div>
     <p>
-      Accessible UI components in plain JavaScript — no framework, no build step,
-      no dependencies. Every component below is fully keyboard-operable and
+      Accessible UI components in plain JavaScript, with no framework, no build
+      step, and no dependencies. Every component below is fully keyboard-operable and
       announces its state to assistive technology. <strong>Try it with Tab and the arrow keys.</strong>
     </p>
   </header>
@@ -41,7 +41,7 @@
           <p>Nothing here needs a mouse: the modal traps and restores focus, the combobox is driven by arrow keys, and every interactive element keeps a visible focus ring.</p>
         </div>
         <div class="uikit-panel" data-uikit-panel>
-          <p>State is carried by ARIA attributes — <code>aria-selected</code>, <code>aria-expanded</code>, <code>aria-invalid</code>, <code>aria-activedescendant</code> — so the component tells assistive tech what it is doing.</p>
+          <p>State is carried by ARIA attributes such as <code>aria-selected</code>, <code>aria-expanded</code>, <code>aria-invalid</code>, and <code>aria-activedescendant</code>, so the component tells assistive tech what it is doing.</p>
         </div>
       </div>
     </section>
@@ -54,7 +54,7 @@
       <div class="uikit-modal" data-uikit="modal" id="confirm-modal" aria-labelledby="confirm-title">
         <div class="uikit-modal-box">
           <h2 id="confirm-title">Delete this account?</h2>
-          <p>This is a demo — nothing will actually happen. Press Escape, or Tab around and notice that focus never leaves this dialog.</p>
+          <p>This is a demo, so nothing will actually happen. Press Escape, or Tab around and notice that focus never leaves this dialog.</p>
           <div class="uikit-modal-actions">
             <button class="uikit-btn uikit-btn--ghost" data-uikit-close>Cancel</button>
             <button class="uikit-btn" id="confirm-delete" data-uikit-close>Yes, delete</button>
@@ -70,13 +70,13 @@
         <div class="uikit-accordion-item" data-uikit-accordion-item>
           <button class="uikit-accordion-trigger" data-uikit-accordion-trigger>Why no framework?</button>
           <div class="uikit-accordion-panel" data-uikit-accordion-panel>
-            <p>Accessibility lives in the DOM and the keyboard model, not in a framework. Building these by hand means understanding focus order, ARIA state, and event handling directly — which transfers to React or anything else.</p>
+            <p>Accessibility lives in the DOM and the keyboard model, not in a framework. Building these by hand means understanding focus order, ARIA state, and event handling directly, which transfers to React or anything else.</p>
           </div>
         </div>
         <div class="uikit-accordion-item" data-uikit-accordion-item>
           <button class="uikit-accordion-trigger" data-uikit-accordion-trigger>How is it tested?</button>
           <div class="uikit-accordion-panel" data-uikit-accordion-panel>
-            <p>A Playwright suite drives this page with real key presses and asserts focus position and ARIA state after each one — the behaviour a screen reader would report.</p>
+            <p>A Playwright suite drives this page with real key presses and asserts focus position and ARIA state after each one, the behaviour a screen reader would report.</p>
           </div>
         </div>
         <div class="uikit-accordion-item" data-uikit-accordion-item>
@@ -155,10 +155,10 @@
       UIKit.toast("Could not reach the server.", { variant: "danger" })
     );
     document.getElementById("signup").addEventListener("uikit:valid", () =>
-      UIKit.toast("Form is valid — submitting.", { variant: "success" })
+      UIKit.toast("Form is valid, submitting.", { variant: "success" })
     );
     document.getElementById("confirm-delete").addEventListener("click", () =>
-      UIKit.toast("Nothing was deleted — this is a demo.", { variant: "danger" })
+      UIKit.toast("Nothing was deleted, this is only a demo.", { variant: "danger" })
     );
   </script>
 </body>

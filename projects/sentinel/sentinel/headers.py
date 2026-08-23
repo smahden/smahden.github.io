@@ -180,7 +180,7 @@ def analyze(headers: Mapping[str, str], target: str = "response") -> Report:
                 severity=Severity.LOW,
                 title="Referrer-Policy is missing",
                 detail=(
-                    "Full URLs — including any tokens in the query string — leak to "
+                    "Full URLs, including any tokens in the query string, leak to "
                     "third-party sites in the Referer header."
                 ),
                 remediation="Send `Referrer-Policy: strict-origin-when-cross-origin`.",

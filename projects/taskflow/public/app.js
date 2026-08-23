@@ -21,7 +21,7 @@
       if (res.status === 401 && this.token) {
         this.setToken(null);
         showAuth();
-        throw new Error("Session expired — please log in again");
+        throw new Error("Session expired, please log in again");
       }
       if (res.status === 204) return null;
       const data = await res.json();
