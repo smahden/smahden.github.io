@@ -366,3 +366,138 @@ ul, ol { list-style: none; }
   .section { padding: 4.2rem 0; }
   .tech-list { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Interactive layer: scroll progress, hero motion, stats,
+   staggered reveals, card tilt, back to top.
+   Everything here is disabled under prefers-reduced-motion.
+   ============================================================ */
+
+/* ---------- Scroll progress ---------- */
+.scroll-progress {
+  position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60;
+  background: transparent; pointer-events: none;
+}
+.scroll-progress span {
+  display: block; height: 100%; width: 100%;
+  transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  will-change: transform;
+}
+
+/* ---------- Animated hero backdrop ---------- */
+.hero { position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.hero-bg::after {
+  /* Faint grid, masked so it fades out before it reaches the copy. */
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 54px 54px;
+  opacity: 0.28;
+  -webkit-mask-image: radial-gradient(circle at 70% 35%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 70% 35%, #000 0%, transparent 72%);
+}
+.hero-grid { position: relative; z-index: 1; }
+
+.orb {
+  position: absolute; border-radius: 50%; filter: blur(80px);
+  opacity: 0.45; will-change: transform;
+}
+.orb-1 { width: 420px; height: 420px; background: var(--accent); top: -140px; right: -80px; animation: drift-a 19s ease-in-out infinite; }
+.orb-2 { width: 340px; height: 340px; background: #818cf8; bottom: -130px; left: -90px; opacity: 0.32; animation: drift-b 23s ease-in-out infinite; }
+.orb-3 { width: 260px; height: 260px; background: var(--accent-strong); top: 42%; left: 46%; opacity: 0.22; animation: drift-c 27s ease-in-out infinite; }
+[data-theme="light"] .orb { opacity: 0.3; }
+[data-theme="light"] .orb-3 { opacity: 0.16; }
+
+@keyframes drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(-46px, 38px, 0) scale(1.1); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(52px, -34px, 0) scale(1.08); }
+}
+@keyframes drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(-30px, -44px, 0) scale(1.14); }
+}
+
+/* Hero copy rises in on first paint. */
+.hero-copy > * { animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+.hero-copy > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-copy > *:nth-child(2) { animation-delay: 0.13s; }
+.hero-copy > *:nth-child(3) { animation-delay: 0.21s; }
+.hero-copy > *:nth-child(4) { animation-delay: 0.29s; }
+.hero-copy > *:nth-child(5) { animation-delay: 0.37s; }
+.hero-copy > *:nth-child(6) { animation-delay: 0.45s; }
+.hero-card { animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards; }
+
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---------- Stats band ---------- */
+.stats-band {
+  background: var(--bg-alt); border-block: 1px solid var(--border);
+  padding: 2.2rem 0;
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.2rem; text-align: center;
+}
+.stat-value {
+  display: block; font-size: clamp(1.8rem, 4.5vw, 2.6rem); font-weight: 800;
+  color: var(--accent); letter-spacing: -0.02em; font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.stat-label {
+  display: block; margin-top: 0.3rem; font-size: 0.82rem; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600;
+}
+
+/* ---------- Reveal, with per-item stagger ---------- */
+.reveal { transition-delay: var(--reveal-delay, 0ms); }
+
+/* ---------- Nav scrollspy ---------- */
+.nav-links a.is-current { color: var(--accent); }
+.nav-links a.is-current::after { width: 100%; }
+
+/* ---------- Pointer-tracked card tilt ---------- */
+.project-card {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.project-card.is-tilting { transition: transform 0.08s linear, border-color 0.2s ease, box-shadow 0.2s ease; }
+.project-card:hover { --ty: -5px; }
+
+/* Skill and chip micro-interactions */
+.skill-card .chips li, .project-tech li {
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.skill-card:hover .chips li { transform: translateY(-1px); }
+
+/* ---------- Back to top ---------- */
+.back-to-top {
+  position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 55;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+  display: grid; place-items: center;
+  background: var(--card); color: var(--accent);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s ease;
+}
+.back-to-top.is-visible { opacity: 1; transform: none; }
+.back-to-top:hover { border-color: var(--accent); transform: translateY(-2px); }
+.back-to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .orb { animation: none; }
+  .hero-copy > *, .hero-card { animation: none; }
+  .project-card { transform: none !important; transition: border-color 0.2s ease; }
+  .scroll-progress span { transition: none; }
+  .back-to-top { transition: none; }
+}

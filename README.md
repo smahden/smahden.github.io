@@ -12,6 +12,8 @@ A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and 
 - 📱 Fully responsive (mobile menu, fluid type, grid layouts)
 - ♿ Accessible: semantic HTML, skip link, keyboard navigation, reduced-motion support
 - ⚡ Zero dependencies — loads instantly, easy to maintain
+- 🔎 SEO ready: descriptive title and meta description, canonical URL, Open Graph and Twitter cards with a generated 1200x630 share image, JSON-LD structured data (Person, WebSite, ProfilePage, and an ItemList of projects), `sitemap.xml`, and `robots.txt`
+- ✨ Interactive: scroll progress bar, animated hero backdrop, count-up stats, staggered scroll reveals, nav scrollspy, pointer-tracked card tilt, and a back-to-top control, all disabled under `prefers-reduced-motion`
 - 🚀 CI/CD: every project's test suite runs on push, and the site auto-deploys to GitHub Pages
 
 ## Project structure
@@ -23,6 +25,8 @@ A fast, responsive, accessible portfolio site built with **plain HTML, CSS, and 
 ├── cv.pdf                        # Downloadable résumé
 ├── resume/Mahden_Saleh_Resume.md # Editable résumé source
 ├── assets/covers/                # SVG covers for projects without a live UI
+├── assets/og-cover.png           # 1200x630 social share image
+├── sitemap.xml, robots.txt       # search engine crawling
 ├── projects/                     # Six complete, tested projects ↓
 │   ├── recolab/                  # ML & AI     — recommender, 56 pytest tests
 │   ├── sentinel/                 # Security    — audit toolkit, 90 pytest tests
