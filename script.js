@@ -108,7 +108,16 @@
       cards.forEach((card) => {
         const match = filter === "all" || categoriesOf(card).includes(filter);
         card.classList.toggle("is-hidden", !match);
-        if (match) shown++;
+        if (match) {
+          if (fromUser && !reduceMotion) {
+            // Restart the entrance animation, staggered by position.
+            card.classList.remove("is-entering");
+            void card.offsetWidth; // reflow, so the animation replays
+            card.style.animationDelay = `${Math.min(shown, 8) * 45}ms`;
+            card.classList.add("is-entering");
+          }
+          shown++;
+        }
       });
       buttons.forEach((button) => {
         button.setAttribute("aria-pressed", String(button.dataset.filter === filter));
@@ -147,6 +156,11 @@
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
 
+  // Direction variants so different sections enter differently.
+  document.querySelectorAll(".about-text").forEach((el) => el.classList.add("reveal", "reveal-left"));
+  document.querySelectorAll(".about-facts").forEach((el) => el.classList.add("reveal", "reveal-right"));
+  document.querySelectorAll(".project-card, .cert-card").forEach((el) => el.classList.add("reveal-scale"));
+
   const observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
@@ -167,28 +181,94 @@
   );
   revealTargets.forEach(function (el) { observer.observe(el); });
 
-  /* ---------- Scroll progress bar ---------- */
+  /* ---------- Pointer-reactive hero ---------- */
+  const hero = document.querySelector(".hero");
+
+  if (hero && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    hero.addEventListener("pointermove", function (event) {
+      const rect = hero.getBoundingClientRect();
+      // Normalized to -0.5..0.5 so the CSS can scale it per layer.
+      hero.style.setProperty("--mx", (event.clientX - rect.left) / rect.width - 0.5);
+      hero.style.setProperty("--my", (event.clientY - rect.top) / rect.height - 0.5);
+    });
+    hero.addEventListener("pointerleave", function () {
+      hero.style.setProperty("--mx", 0);
+      hero.style.setProperty("--my", 0);
+    });
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll(".btn").forEach(function (button) {
+      button.addEventListener("pointermove", function (event) {
+        const rect = button.getBoundingClientRect();
+        button.style.setProperty("--pull-x", ((event.clientX - rect.left) / rect.width - 0.5) * 10);
+        button.style.setProperty("--pull-y", ((event.clientY - rect.top) / rect.height - 0.5) * 8);
+      });
+      button.addEventListener("pointerleave", function () {
+        button.style.setProperty("--pull-x", 0);
+        button.style.setProperty("--pull-y", 0);
+      });
+    });
+  }
+
+  /* ---------- Nav hides going down, returns going up ---------- */
+  const nav = document.querySelector(".nav");
+  let lastY = window.scrollY;
+
+  /* ---------- Timeline draws itself once in view ---------- */
+  const timeline = document.querySelector(".timeline");
+  if (timeline) {
+    new IntersectionObserver(
+      function (entries, self) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-drawn");
+          self.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.05 }
+    ).observe(timeline);
+  }
+
+  /* ---------- Scroll-driven chrome ---------- */
   const progressBar = document.getElementById("scroll-progress-bar");
   const backToTop = document.getElementById("back-to-top");
   let ticking = false;
 
   function onScroll() {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
-    if (progressBar) progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+    const y = window.scrollY;
+    const ratio = scrollable > 0 ? Math.min(1, Math.max(0, y / scrollable)) : 0;
+
+    if (progressBar) progressBar.style.transform = `scaleX(${ratio})`;
 
     if (backToTop) {
-      const show = window.scrollY > window.innerHeight * 0.6;
+      const show = y > window.innerHeight * 0.6;
       backToTop.hidden = !show;
       backToTop.classList.toggle("is-visible", show);
+      backToTop.style.setProperty("--scroll-progress", ratio);
     }
+
+    if (nav) {
+      nav.classList.toggle("is-scrolled", y > 20);
+      // Hide only when moving down, past the hero, and not mid-menu.
+      const goingDown = y > lastY + 4;
+      const menuOpen = navLinks.classList.contains("open");
+      if (y > window.innerHeight * 0.8 && !menuOpen) {
+        nav.classList.toggle("is-hidden", goingDown);
+      } else {
+        nav.classList.remove("is-hidden");
+      }
+    }
+    lastY = y;
     ticking = false;
   }
 
   window.addEventListener(
     "scroll",
     function () {
-      // rAF-throttled: the handler runs at most once per frame.
+      // rAF-throttled: at most one recalculation per frame.
       if (!ticking) {
         ticking = true;
         window.requestAnimationFrame(onScroll);
@@ -224,7 +304,6 @@
           });
         });
       },
-      // Trigger when a section crosses the upper third of the viewport.
       { rootMargin: "-20% 0px -70% 0px" }
     );
     watched.forEach(function (section) { spy.observe(section); });
@@ -241,8 +320,11 @@
           countObserver.unobserve(entry.target);
 
           const target = Number(entry.target.dataset.count);
+          const done = () => entry.target.closest(".stat").classList.add("is-done");
+
           if (reduceMotion || target === 0) {
             entry.target.textContent = String(target);
+            done();
             return;
           }
 
@@ -250,10 +332,10 @@
           const start = performance.now();
           (function step(now) {
             const t = Math.min(1, (now - start) / duration);
-            // Ease-out cubic so the number decelerates into place.
-            const eased = 1 - Math.pow(1 - t, 3);
-            entry.target.textContent = String(Math.round(target * eased));
+            // Ease-out cubic, so the number decelerates into place.
+            entry.target.textContent = String(Math.round(target * (1 - Math.pow(1 - t, 3))));
             if (t < 1) requestAnimationFrame(step);
+            else done();
           })(start);
         });
       },
@@ -265,18 +347,18 @@
     });
   }
 
-  /* ---------- Pointer-tracked card tilt ---------- */
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-  if (finePointer && !reduceMotion) {
+  /* ---------- Card tilt and cursor spotlight ---------- */
+  if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     document.querySelectorAll(".project-card").forEach(function (card) {
       card.addEventListener("pointermove", function (event) {
         const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
         card.classList.add("is-tilting");
-        card.style.setProperty("--ry", `${x * 6}deg`);
-        card.style.setProperty("--rx", `${-y * 6}deg`);
+        card.style.setProperty("--ry", `${(x - 0.5) * 9}deg`);
+        card.style.setProperty("--rx", `${(0.5 - y) * 9}deg`);
+        card.style.setProperty("--px", `${x * 100}%`);
+        card.style.setProperty("--py", `${y * 100}%`);
       });
       card.addEventListener("pointerleave", function () {
         card.classList.remove("is-tilting");
