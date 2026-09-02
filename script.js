@@ -12,6 +12,9 @@
   }
 
   themeToggle.addEventListener("click", function () {
+    // Ease the colour change instead of snapping between palettes.
+    document.body.classList.add("theme-transition");
+    setTimeout(() => document.body.classList.remove("theme-transition"), 500);
     const isLight = root.getAttribute("data-theme") === "light";
     if (isLight) {
       root.removeAttribute("data-theme");
@@ -42,14 +45,27 @@
   /* ---------- Typed rotating words in hero ---------- */
   const typedEl = document.getElementById("typed");
   const words = ["ships.", "scales.", "lasts.", "people love."];
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Live setting: the toggle can flip it at any time, so read it per call
+  // rather than capturing a boolean at load.
+  const motionOn = () => root.getAttribute("data-motion") !== "off";
+  const finePointer = () => window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-  if (typedEl && !reduceMotion) {
+  let typing = false;
+
+  function startTyping() {
+    if (!typedEl || typing) return;
+    typing = true;
     let wordIndex = 0;
     let charIndex = words[0].length;
     let deleting = true;
 
     function tick() {
+      if (!motionOn()) {
+        // Settle on a whole word instead of freezing mid-deletion.
+        typedEl.textContent = words[wordIndex];
+        typing = false;
+        return;
+      }
       const word = words[wordIndex];
       if (deleting) {
         charIndex--;
@@ -71,6 +87,26 @@
       }
     }
     setTimeout(tick, 2200);
+  }
+
+  if (motionOn()) startTyping();
+
+  /* ---------- Motion toggle ---------- */
+  const motionToggle = document.getElementById("motion-toggle");
+
+  if (motionToggle) {
+    motionToggle.setAttribute("aria-pressed", String(motionOn()));
+    motionToggle.addEventListener("click", function () {
+      const next = motionOn() ? "off" : "on";
+      root.setAttribute("data-motion", next);
+      motionToggle.setAttribute("aria-pressed", String(next === "on"));
+      try {
+        localStorage.setItem("motion", next);
+      } catch {
+        /* storage blocked; the choice still applies to this page view */
+      }
+      if (next === "on") startTyping();
+    });
   }
 
   /* ---------- Project filtering by discipline ---------- */
@@ -109,7 +145,7 @@
         const match = filter === "all" || categoriesOf(card).includes(filter);
         card.classList.toggle("is-hidden", !match);
         if (match) {
-          if (fromUser && !reduceMotion) {
+          if (fromUser && motionOn()) {
             // Restart the entrance animation, staggered by position.
             card.classList.remove("is-entering");
             void card.offsetWidth; // reflow, so the animation replays
@@ -181,36 +217,154 @@
   );
   revealTargets.forEach(function (el) { observer.observe(el); });
 
-  /* ---------- Pointer-reactive hero ---------- */
+  /* ---------- Frame-smoothed pointer motion ----------
+     Pointer events fire faster than the screen refreshes, and writing the raw
+     value each time makes the movement twitch. Each effect stores a target and
+     one animation loop eases the rendered value toward it, so motion glides.  */
+
+  const lerp = (from, to, amount) => from + (to - from) * amount;
+
+  function smoothPointer(element, options) {
+    const target = { x: 0, y: 0 };
+    const current = { x: 0, y: 0 };
+    const apply = options.apply;
+    const ease = options.ease || 0.12;
+    let running = false;
+
+    function frame() {
+      current.x = lerp(current.x, target.x, ease);
+      current.y = lerp(current.y, target.y, ease);
+      apply(current.x, current.y);
+
+      // Stop the loop once it has effectively settled, to save battery.
+      if (Math.abs(current.x - target.x) > 0.0005 || Math.abs(current.y - target.y) > 0.0005) {
+        requestAnimationFrame(frame);
+      } else {
+        apply(target.x, target.y);
+        running = false;
+      }
+    }
+
+    function start() {
+      if (running) return;
+      running = true;
+      requestAnimationFrame(frame);
+    }
+
+    element.addEventListener("pointermove", function (event) {
+      if (!motionOn() || !finePointer()) return;
+      const rect = element.getBoundingClientRect();
+      target.x = (event.clientX - rect.left) / rect.width - 0.5;
+      target.y = (event.clientY - rect.top) / rect.height - 0.5;
+      if (options.onMove) options.onMove(target.x + 0.5, target.y + 0.5);
+      start();
+    });
+
+    element.addEventListener("pointerleave", function () {
+      target.x = 0;
+      target.y = 0;
+      if (options.onLeave) options.onLeave();
+      start();
+    });
+  }
+
+  /* Hero aurora and code window lean toward the pointer. */
   const hero = document.querySelector(".hero");
-
-  if (hero && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    hero.addEventListener("pointermove", function (event) {
-      const rect = hero.getBoundingClientRect();
-      // Normalized to -0.5..0.5 so the CSS can scale it per layer.
-      hero.style.setProperty("--mx", (event.clientX - rect.left) / rect.width - 0.5);
-      hero.style.setProperty("--my", (event.clientY - rect.top) / rect.height - 0.5);
-    });
-    hero.addEventListener("pointerleave", function () {
-      hero.style.setProperty("--mx", 0);
-      hero.style.setProperty("--my", 0);
+  if (hero) {
+    smoothPointer(hero, {
+      ease: 0.09,
+      apply(x, y) {
+        hero.style.setProperty("--mx", x.toFixed(4));
+        hero.style.setProperty("--my", y.toFixed(4));
+      },
     });
   }
 
-  /* ---------- Magnetic buttons ---------- */
-  if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    document.querySelectorAll(".btn").forEach(function (button) {
-      button.addEventListener("pointermove", function (event) {
-        const rect = button.getBoundingClientRect();
-        button.style.setProperty("--pull-x", ((event.clientX - rect.left) / rect.width - 0.5) * 10);
-        button.style.setProperty("--pull-y", ((event.clientY - rect.top) / rect.height - 0.5) * 8);
-      });
-      button.addEventListener("pointerleave", function () {
-        button.style.setProperty("--pull-x", 0);
-        button.style.setProperty("--pull-y", 0);
-      });
+  /* Project cards tilt, and light up where the cursor is. */
+  document.querySelectorAll(".project-card").forEach(function (card) {
+    smoothPointer(card, {
+      ease: 0.16,
+      apply(x, y) {
+        card.style.setProperty("--ry", `${(x * 18).toFixed(2)}deg`);
+        card.style.setProperty("--rx", `${(-y * 18).toFixed(2)}deg`);
+      },
+      onMove(px, py) {
+        card.classList.add("is-tilting");
+        card.style.setProperty("--px", `${(px * 100).toFixed(1)}%`);
+        card.style.setProperty("--py", `${(py * 100).toFixed(1)}%`);
+      },
+      onLeave() {
+        card.classList.remove("is-tilting");
+      },
     });
+  });
+
+  /* Buttons drift a few pixels toward the cursor. */
+  document.querySelectorAll(".btn").forEach(function (button) {
+    smoothPointer(button, {
+      ease: 0.2,
+      apply(x, y) {
+        button.style.setProperty("--pull-x", (x * 12).toFixed(2));
+        button.style.setProperty("--pull-y", (y * 10).toFixed(2));
+      },
+    });
+  });
+
+  /* ---------- Eased anchor scrolling ---------- */
+  const easeInOutCubic = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+  function scrollToY(destination, duration) {
+    const startY = window.scrollY;
+    const distance = destination - startY;
+    if (Math.abs(distance) < 2) return;
+    const startTime = performance.now();
+
+    (function step(now) {
+      const t = Math.min(1, (now - startTime) / duration);
+      // `instant` keeps the browser from also animating each step.
+      window.scrollTo({ top: startY + distance * easeInOutCubic(t), behavior: "instant" });
+      if (t < 1) requestAnimationFrame(step);
+    })(startTime);
   }
+
+  document.addEventListener("click", function (event) {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || link.classList.contains("skip-link")) return;
+
+    const id = link.getAttribute("href");
+    if (id === "#" || id.length < 2) return;
+    const destination = document.querySelector(id);
+    if (!destination) return;
+
+    event.preventDefault();
+    const navHeight = document.querySelector(".nav").offsetHeight;
+    const top = destination.getBoundingClientRect().top + window.scrollY - navHeight - 14;
+
+    if (motionOn()) scrollToY(top, 750);
+    else window.scrollTo({ top, behavior: "instant" });
+
+    // Keep the keyboard in step with the eye.
+    destination.setAttribute("tabindex", "-1");
+    destination.focus({ preventScroll: true });
+    history.replaceState(null, "", id);
+  });
+
+  /* ---------- Click ripple ---------- */
+  document.addEventListener("pointerdown", function (event) {
+    if (!motionOn()) return;
+    const control = event.target.closest(".btn, .filter, .back-to-top");
+    if (!control) return;
+
+    const rect = control.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const ripple = document.createElement("span");
+    ripple.className = "ripple";
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+    control.appendChild(ripple);
+    ripple.addEventListener("animationend", () => ripple.remove());
+  });
 
   /* ---------- Nav hides going down, returns going up ---------- */
   const nav = document.querySelector(".nav");
@@ -280,7 +434,7 @@
 
   if (backToTop) {
     backToTop.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      window.scrollTo({ top: 0, behavior: !motionOn() ? "auto" : "smooth" });
       document.querySelector(".logo").focus({ preventScroll: true });
     });
   }
@@ -322,7 +476,7 @@
           const target = Number(entry.target.dataset.count);
           const done = () => entry.target.closest(".stat").classList.add("is-done");
 
-          if (reduceMotion || target === 0) {
+          if (!motionOn() || target === 0) {
             entry.target.textContent = String(target);
             done();
             return;
@@ -342,29 +496,9 @@
       { threshold: 0.5 }
     );
     statValues.forEach(function (el) {
-      if (!reduceMotion && Number(el.dataset.count) > 0) el.textContent = "0";
+      if (motionOn() && Number(el.dataset.count) > 0) el.textContent = "0";
       countObserver.observe(el);
     });
   }
 
-  /* ---------- Card tilt and cursor spotlight ---------- */
-  if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    document.querySelectorAll(".project-card").forEach(function (card) {
-      card.addEventListener("pointermove", function (event) {
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
-        card.classList.add("is-tilting");
-        card.style.setProperty("--ry", `${(x - 0.5) * 9}deg`);
-        card.style.setProperty("--rx", `${(0.5 - y) * 9}deg`);
-        card.style.setProperty("--px", `${x * 100}%`);
-        card.style.setProperty("--py", `${y * 100}%`);
-      });
-      card.addEventListener("pointerleave", function () {
-        card.classList.remove("is-tilting");
-        card.style.setProperty("--ry", "0deg");
-        card.style.setProperty("--rx", "0deg");
-      });
-    });
-  }
 })();

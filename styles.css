@@ -127,8 +127,12 @@ ul, ol { list-style: none; }
   font-weight: 700; margin: 0.4rem 0 1.4rem; letter-spacing: -0.01em;
 }
 .accent { color: var(--accent); }
-.cursor { color: var(--accent); animation: blink 1s step-end infinite; font-weight: 400; }
-@keyframes blink { 50% { opacity: 0; } }
+.cursor { color: var(--accent); animation: blink 1.15s ease-in-out infinite; font-weight: 400; }
+@keyframes blink {
+  0%, 42% { opacity: 1; }
+  58%, 92% { opacity: 0.05; }
+  100% { opacity: 1; }
+}
 
 .hero-lede { max-width: 34rem; margin-bottom: 2rem; }
 
@@ -199,11 +203,8 @@ ul, ol { list-style: none; }
 .reveal { opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease; }
 .reveal:not(.visible) { transform: translateY(24px); }
 .reveal.visible { opacity: 1; }
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .reveal, .reveal:not(.visible) { opacity: 1; transform: none; transition: none; }
-  .cursor { animation: none; }
-}
+/* JavaScript takes over anchor scrolling so it can be eased consistently. */
+html.has-js { scroll-behavior: auto; }
 
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.6rem; align-items: start; }
@@ -608,19 +609,55 @@ ul, ol { list-style: none; }
   mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
 }
 
-/* ---------- Motion preferences ---------- */
+/* ---------- Motion switch ---------- */
+/* Driven by the toggle in the nav. The inline boot script seeds it from the
+   system preference, so reduced-motion visitors still get a still page by
+   default, but anyone can turn motion back on. */
+:root[data-motion="off"] .reveal, :root[data-motion="off"] .reveal:not(.visible) { opacity: 1 !important; transform: none !important; transition: none !important; }
+:root[data-motion="off"] .cursor { animation: none; }
+:root[data-motion="off"] .orb { animation: none; translate: none; }
+:root[data-motion="off"] .hero-copy > *, :root[data-motion="off"] .hero-card, :root[data-motion="off"] .hero h1 { animation: none; }
+:root[data-motion="off"] .code-window { transform: rotate(1.2deg); }
+:root[data-motion="off"] .project-card { transform: none !important; transition: border-color 0.2s ease; }
+:root[data-motion="off"] .project-card::before { display: none; }
+:root[data-motion="off"] .project-card:hover .project-shot::after { animation: none; }
+:root[data-motion="off"] .marquee-track { animation: none; }
+:root[data-motion="off"] .timeline::before { transform: scaleY(1); }
+:root[data-motion="off"] .timeline-item.visible .timeline-dot { animation: none; }
+:root[data-motion="off"] .stat.is-done .stat-value, :root[data-motion="off"] .filter[aria-pressed='true'] { animation: none; }
+:root[data-motion="off"] .project-card.is-entering { animation: none; }
+:root[data-motion="off"] .btn { translate: none; }
+:root[data-motion="off"] .btn::after, :root[data-motion="off"] .ripple { display: none; }
+:root[data-motion="off"] .back-to-top { transition: opacity 0.2s ease; }
+:root[data-motion="off"] .section-title::after, :root[data-motion="off"] .section-title.visible::after { max-width: 280px; transition: none; }
+
+/* Visitors without JavaScript never get the toggle, so honour the system. */
 @media (prefers-reduced-motion: reduce) {
-  .orb { animation: none; translate: none; }
-  .hero-copy > *, .hero-card { animation: none; }
-  .hero h1 { animation: none; }
-  .code-window { transform: rotate(1.2deg); }
-  .project-card { transform: none !important; transition: border-color 0.2s ease; }
-  .project-card:hover .project-shot::after { animation: none; }
-  .marquee-track { animation: none; }
-  .timeline::before { transform: scaleY(1); }
-  .timeline-item.visible .timeline-dot { animation: none; }
-  .stat.is-done .stat-value, .filter[aria-pressed="true"] { animation: none; }
-  .project-card.is-entering { animation: none; }
-  .btn { translate: none; }
-  .back-to-top { transition: opacity 0.2s ease; }
+  html:not(.has-js) { scroll-behavior: auto; }
+}
+html:not(.has-js) .reveal { opacity: 1; transform: none; }
+
+/* ---------- Motion toggle button ---------- */
+#motion-toggle {
+  background: none; border: 1px solid var(--border); color: var(--text);
+  width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+  display: grid; place-items: center; transition: border-color 0.2s, color 0.2s;
+}
+#motion-toggle:hover { border-color: var(--accent); color: var(--accent); }
+#motion-toggle:focus-visible, #theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:root[data-motion="off"] #motion-toggle { color: var(--muted); }
+:root[data-motion="on"] .icon-motion-off { display: none; }
+:root[data-motion="off"] .icon-motion-on { display: none; }
+
+/* ---------- Click ripple ---------- */
+.ripple {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: currentColor; opacity: 0.28; transform: scale(0);
+  animation: ripple 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes ripple { to { transform: scale(2.6); opacity: 0; } }
+
+/* ---------- Colour changes ease when the theme flips ---------- */
+.theme-transition, .theme-transition * {
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease !important;
 }
