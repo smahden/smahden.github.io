@@ -54,71 +54,93 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Person",
-        "@id": "https://smahden.github.io/#person",
-        "name": "Mahden Saleh",
-        "givenName": "Mahden",
-        "familyName": "Saleh",
-        "jobTitle": "Full-Stack Software Engineer",
-        "description": "Full-stack software engineer and Computer Science graduate working across machine learning, front end, back end, and application security.",
+        "@type": "ProfilePage",
+        "@id": "https://smahden.github.io/#webpage",
         "url": "https://smahden.github.io/",
-        "image": "https://smahden.github.io/assets/og-cover.png",
-        "email": "mailto:msmahden@gmail.com",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Kansas City",
-          "addressRegion": "MO",
-          "addressCountry": "US"
+        "name": "Mahden Saleh | Full-Stack Software Engineer in Kansas City",
+        "isPartOf": {
+          "@id": "https://smahden.github.io/#website"
         },
-        "alumniOf": {
-          "@type": "CollegeOrUniversity",
-          "name": "University of the East",
+        "primaryImageOfPage": "https://smahden.github.io/assets/og-cover.png",
+        "inLanguage": "en-US",
+        "dateCreated": "2026-04-26T00:00:00+00:00",
+        "dateModified": "2026-09-03T00:00:00+00:00",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://smahden.github.io/#person",
+          "name": "Mahden Saleh",
+          "givenName": "Mahden",
+          "familyName": "Saleh",
+          "jobTitle": "Full-Stack Software Engineer",
+          "description": "Full-stack software engineer and Computer Science graduate working across machine learning, front end, back end, and application security.",
+          "url": "https://smahden.github.io/",
+          "image": "https://smahden.github.io/assets/og-cover.png",
+          "email": "mailto:msmahden@gmail.com",
           "address": {
             "@type": "PostalAddress",
-            "addressLocality": "Manila",
-            "addressCountry": "PH"
-          }
-        },
-        "knowsAbout": [
-          "Full-stack web development",
-          "Machine learning",
-          "Recommendation systems",
-          "Content-based filtering",
-          "REST API design",
-          "Application security",
-          "Web accessibility",
-          "JavaScript",
-          "Python",
-          "React",
-          "Node.js",
-          "FastAPI",
-          "MySQL",
-          "SQL"
-        ],
-        "hasCredential": [
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "Microsoft Azure Fundamentals",
-            "credentialCategory": "certificate",
-            "recognizedBy": { "@type": "Organization", "name": "Microsoft" }
+            "addressLocality": "Kansas City",
+            "addressRegion": "MO",
+            "addressCountry": "US"
           },
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "Foundations of Project Management",
-            "credentialCategory": "certificate",
-            "recognizedBy": { "@type": "Organization", "name": "Google" }
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "University of the East",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Manila",
+              "addressCountry": "PH"
+            }
           },
-          {
-            "@type": "EducationalOccupationalCredential",
-            "name": "IT Specialist: HTML and CSS",
-            "credentialCategory": "certificate",
-            "recognizedBy": { "@type": "Organization", "name": "Certiport" }
-          }
-        ],
-        "sameAs": [
-          "https://github.com/smahden",
-          "https://www.linkedin.com/in/mahden"
-        ]
+          "knowsAbout": [
+            "Full-stack web development",
+            "Machine learning",
+            "Recommendation systems",
+            "Content-based filtering",
+            "REST API design",
+            "Application security",
+            "Web accessibility",
+            "JavaScript",
+            "Python",
+            "React",
+            "Node.js",
+            "FastAPI",
+            "MySQL",
+            "SQL"
+          ],
+          "hasCredential": [
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Microsoft Azure Fundamentals",
+              "credentialCategory": "certificate",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "Microsoft"
+              }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "Foundations of Project Management",
+              "credentialCategory": "certificate",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "Google"
+              }
+            },
+            {
+              "@type": "EducationalOccupationalCredential",
+              "name": "IT Specialist: HTML and CSS",
+              "credentialCategory": "certificate",
+              "recognizedBy": {
+                "@type": "Organization",
+                "name": "Certiport"
+              }
+            }
+          ],
+          "sameAs": [
+            "https://github.com/smahden",
+            "https://www.linkedin.com/in/mahden"
+          ]
+        }
       },
       {
         "@type": "WebSite",
@@ -126,17 +148,9 @@
         "url": "https://smahden.github.io/",
         "name": "Mahden Saleh, software engineering portfolio",
         "inLanguage": "en-US",
-        "publisher": { "@id": "https://smahden.github.io/#person" }
-      },
-      {
-        "@type": "ProfilePage",
-        "@id": "https://smahden.github.io/#webpage",
-        "url": "https://smahden.github.io/",
-        "name": "Mahden Saleh | Full-Stack Software Engineer in Kansas City",
-        "isPartOf": { "@id": "https://smahden.github.io/#website" },
-        "about": { "@id": "https://smahden.github.io/#person" },
-        "primaryImageOfPage": "https://smahden.github.io/assets/og-cover.png",
-        "inLanguage": "en-US"
+        "publisher": {
+          "@id": "https://smahden.github.io/#person"
+        }
       },
       {
         "@type": "ItemList",
@@ -151,10 +165,15 @@
               "@type": "SoftwareSourceCode",
               "name": "RecoLab",
               "description": "Content-based recommendation engine built from scratch with TF-IDF vectorization, cosine similarity, and ranking metrics.",
-              "programmingLanguage": ["Python", "JavaScript"],
+              "programmingLanguage": [
+                "Python",
+                "JavaScript"
+              ],
               "codeRepository": "https://github.com/smahden/portfolio/tree/main/projects/recolab",
               "url": "https://smahden.github.io/projects/recolab/web/",
-              "author": { "@id": "https://smahden.github.io/#person" }
+              "author": {
+                "@id": "https://smahden.github.io/#person"
+              }
             }
           },
           {
@@ -167,7 +186,9 @@
               "programmingLanguage": "Python",
               "codeRepository": "https://github.com/smahden/portfolio/tree/main/projects/sentinel",
               "url": "https://smahden.github.io/projects/sentinel/docs/report.html",
-              "author": { "@id": "https://smahden.github.io/#person" }
+              "author": {
+                "@id": "https://smahden.github.io/#person"
+              }
             }
           },
           {
@@ -180,7 +201,9 @@
               "programmingLanguage": "JavaScript",
               "codeRepository": "https://github.com/smahden/portfolio/tree/main/projects/uikit",
               "url": "https://smahden.github.io/projects/uikit/",
-              "author": { "@id": "https://smahden.github.io/#person" }
+              "author": {
+                "@id": "https://smahden.github.io/#person"
+              }
             }
           },
           {
@@ -190,9 +213,14 @@
               "@type": "SoftwareSourceCode",
               "name": "TaskFlow",
               "description": "Full-stack Kanban task manager with JWT authentication, per-user ownership enforcement, and transactional drag-and-drop ordering.",
-              "programmingLanguage": ["JavaScript", "SQL"],
+              "programmingLanguage": [
+                "JavaScript",
+                "SQL"
+              ],
               "codeRepository": "https://github.com/smahden/portfolio/tree/main/projects/taskflow",
-              "author": { "@id": "https://smahden.github.io/#person" }
+              "author": {
+                "@id": "https://smahden.github.io/#person"
+              }
             }
           },
           {
@@ -204,7 +232,9 @@
               "description": "E-commerce REST API with searchable catalog, stock-controlled carts, and checkout that snapshots prices into immutable order history.",
               "programmingLanguage": "Python",
               "codeRepository": "https://github.com/smahden/portfolio/tree/main/projects/shoplite",
-              "author": { "@id": "https://smahden.github.io/#person" }
+              "author": {
+                "@id": "https://smahden.github.io/#person"
+              }
             }
           },
           {
@@ -217,7 +247,9 @@
               "programmingLanguage": "JavaScript",
               "codeRepository": "https://github.com/smahden/portfolio/tree/main/projects/devmetrics",
               "url": "https://smahden.github.io/projects/devmetrics/",
-              "author": { "@id": "https://smahden.github.io/#person" }
+              "author": {
+                "@id": "https://smahden.github.io/#person"
+              }
             }
           }
         ]
