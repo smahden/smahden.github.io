@@ -187,14 +187,18 @@
   }
 
   /* ---------- Reveal sections on scroll ---------- */
+  // Every element listed here is both hidden and observed. Anything given the
+  // `reveal` class without being observed would stay invisible forever, so the
+  // two must come from the same list.
   const revealTargets = document.querySelectorAll(
-    ".section-title, .about-grid, .skill-card, .project-card, .timeline-item, .cert-card, .contact-lede"
+    ".section-title, .about-text, .about-facts, .skill-card, .project-card," +
+    " .timeline-item, .cert-card, .contact-lede"
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
 
-  // Direction variants so different sections enter differently.
-  document.querySelectorAll(".about-text").forEach((el) => el.classList.add("reveal", "reveal-left"));
-  document.querySelectorAll(".about-facts").forEach((el) => el.classList.add("reveal", "reveal-right"));
+  // Direction variants, so sections do not all enter the same way.
+  document.querySelectorAll(".about-text").forEach((el) => el.classList.add("reveal-left"));
+  document.querySelectorAll(".about-facts").forEach((el) => el.classList.add("reveal-right"));
   document.querySelectorAll(".project-card, .cert-card").forEach((el) => el.classList.add("reveal-scale"));
 
   const observer = new IntersectionObserver(
@@ -216,6 +220,24 @@
     { threshold: 0.12 }
   );
   revealTargets.forEach(function (el) { observer.observe(el); });
+
+  // Safety net. An IntersectionObserver only fires for elements that actually
+  // pass through the viewport, so jumping straight to a section (an anchor
+  // click, a restored scroll position, a deep link) can leave the elements it
+  // skipped over stuck at opacity 0. This sweep reveals anything at or above
+  // the fold that the observer never saw.
+  let pending = [...revealTargets];
+
+  function revealSkipped() {
+    if (!pending.length) return;
+    pending = pending.filter(function (el) {
+      if (el.classList.contains("visible")) return false;
+      if (el.getBoundingClientRect().top > window.innerHeight) return true;
+      el.classList.add("visible");
+      observer.unobserve(el);
+      return false;
+    });
+  }
 
   /* ---------- Frame-smoothed pointer motion ----------
      Pointer events fire faster than the screen refreshes, and writing the raw
@@ -415,6 +437,7 @@
         nav.classList.remove("is-hidden");
       }
     }
+    revealSkipped();
     lastY = y;
     ticking = false;
   }
