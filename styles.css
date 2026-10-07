@@ -303,6 +303,22 @@ html.has-js { scroll-behavior: auto; }
 .project-card h3 { color: var(--text-strong); font-size: 1.15rem; }
 .project-card p { font-size: 0.94rem; flex: 1; }
 .project-tech { margin-top: auto; }
+
+/* A measured outcome is the rarest thing on a junior portfolio, so give it
+   its own block rather than burying it in the description. */
+.project-result {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 8px; padding: 0.6rem 0.8rem;
+  flex: 0 0 auto;
+}
+.project-result strong {
+  font-family: var(--font-mono); font-size: 1.3rem; line-height: 1;
+  color: var(--accent); white-space: nowrap;
+}
+.project-result span { font-size: 0.8rem; line-height: 1.45; color: var(--muted); }
+.project-result em { font-style: normal; opacity: 0.85; }
 .projects-more { text-align: center; margin-top: 2.4rem; font-family: var(--font-mono); font-size: 0.9rem; }
 
 /* ---------- Timeline ---------- */
