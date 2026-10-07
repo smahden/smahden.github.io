@@ -86,6 +86,7 @@ Internal web app centralizing employee records: RESTful CRUD endpoints with serv
 
 ## Certifications
 
-- **Microsoft Azure Fundamentals** — Microsoft (Credential ID: 33B54C79259F3595)
+- **Microsoft Azure Fundamentals (AZ-900)** — Microsoft (Credential ID: 33B54C79259F3595)
+- **AI Fundamentals** — Google (Credential ID: IXX37TNN8CIN)
 - **Foundations of Project Management** — Google (Credential ID: EUM4UPIIPV8D)
 - **IT Specialist: HTML & CSS** — Certiport (Credential ID: uNxs-XM3V)
