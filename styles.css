@@ -40,6 +40,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
+/* Keeps the off-canvas nav drawer from extending the page sideways. */
+html, body { overflow-x: clip; }
 
 body {
   font-family: var(--font-sans);
@@ -387,7 +389,9 @@ a.cert-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3p
   .about-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 720px) {
+/* Six links stop fitting beside the logo and controls below ~860px, so the
+   drawer takes over there rather than at the old 720px cut-off. */
+@media (max-width: 860px) {
   .nav-links {
     /* absolute, not fixed: the header's backdrop-filter makes it the
        containing block, so fixed would collapse to the header's height */
@@ -400,6 +404,9 @@ a.cert-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3p
   .nav-links.open { transform: none; box-shadow: var(--shadow); }
   .nav-links a { display: block; padding: 0.9rem 0.4rem; font-size: 1.05rem; }
   #menu-toggle { display: flex; }
+}
+
+@media (max-width: 720px) {
   .section { padding: 4.2rem 0; }
   .tech-list { grid-template-columns: 1fr; }
 }
@@ -764,3 +771,45 @@ html:not(.has-js) .reveal { opacity: 1; transform: none; }
 :root[data-motion="off"] .about-text strong::after { transition: none; }
 :root[data-motion="off"] .fact-card { transition: border-color 0.2s ease; }
 :root[data-motion="off"] .fact-card:hover { transform: none; }
+
+/* ============================================================
+   Scroll polish
+   ============================================================ */
+
+/* Alternating sections met in a hard line; a hairline gradient softens the
+   seam and gives the page a sense of travel as you move down it. */
+.section-alt { position: relative; }
+.section-alt::before,
+.section-alt::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.section-alt::before { top: 0; }
+.section-alt::after { bottom: 0; }
+
+/* The section number reads as a chip rather than loose text. */
+.section-num {
+  background: var(--accent-soft);
+  border-radius: 6px; padding: 0.1em 0.45em;
+}
+
+/* Cards lift toward the accent on hover instead of only changing border. */
+.project-card:hover,
+.skill-card:hover { box-shadow: 0 18px 40px -22px color-mix(in srgb, var(--accent) 55%, transparent); }
+.cert-card:hover { box-shadow: 0 16px 34px -20px color-mix(in srgb, var(--accent) 50%, transparent); }
+
+/* Hero parallax is written inline by script.js; easing the opacity keeps the
+   fade smooth between rAF samples without fighting the entrance animation. */
+.hero-copy, .hero-card { transition: opacity 0.18s linear; }
+
+:root[data-motion="off"] .hero-copy,
+:root[data-motion="off"] .hero-card {
+  translate: none !important; opacity: 1 !important; transition: none;
+}
+:root[data-motion="off"] .project-card:hover,
+:root[data-motion="off"] .skill-card:hover,
+:root[data-motion="off"] .cert-card:hover { box-shadow: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy, .hero-card { translate: none !important; opacity: 1 !important; transition: none; }
+}

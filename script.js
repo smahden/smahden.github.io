@@ -192,7 +192,8 @@
   // two must come from the same list.
   const revealTargets = document.querySelectorAll(
     ".section-title, .about-text, .about-facts, .skill-card, .project-card," +
-    " .timeline-item, .cert-card, .contact-lede"
+    " .timeline-item, .cert-card, .contact-lede, .projects-intro, .filters," +
+    " .projects-more, .contact .hero-cta, .contact .btn-lg"
   );
   revealTargets.forEach(function (el) { el.classList.add("reveal"); });
 
@@ -412,6 +413,33 @@
   const backToTop = document.getElementById("back-to-top");
   let ticking = false;
 
+  // The hero drifts up and dissolves as it leaves, so the first scroll gesture
+  // gets an immediate response. These write `translate` and `opacity` rather
+  // than `transform`, which the entrance animation and the pointer-lean effects
+  // already own, so the three compose instead of overwriting one another.
+  const heroCopyEl = document.querySelector(".hero-copy");
+  const heroCardEl = document.querySelector(".hero-card");
+
+  function heroParallax(y) {
+    if (!heroCopyEl && !heroCardEl) return;
+    if (!motionOn()) {
+      [heroCopyEl, heroCardEl].forEach(function (el) {
+        if (el) { el.style.translate = ""; el.style.opacity = ""; }
+      });
+      return;
+    }
+    const t = Math.min(1, Math.max(0, y / window.innerHeight));
+    const fade = t * t;
+    if (heroCopyEl) {
+      heroCopyEl.style.translate = "0 " + (t * 54).toFixed(1) + "px";
+      heroCopyEl.style.opacity = (1 - fade * 0.92).toFixed(3);
+    }
+    if (heroCardEl) {
+      heroCardEl.style.translate = "0 " + (t * 92).toFixed(1) + "px";
+      heroCardEl.style.opacity = (1 - fade).toFixed(3);
+    }
+  }
+
   function onScroll() {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const y = window.scrollY;
@@ -437,6 +465,7 @@
         nav.classList.remove("is-hidden");
       }
     }
+    heroParallax(y);
     revealSkipped();
     lastY = y;
     ticking = false;
