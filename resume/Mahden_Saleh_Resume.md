@@ -27,7 +27,7 @@ Full-stack software engineer and Computer Science graduate who designs, builds, 
 
 ## Experience
 
-### Software Engineer Intern — ToonCity
+### Software Engineer / IT Support Intern — ToonCity
 **May 2024 – July 2024**
 
 - Developed an internal employee-management web application using PHP, Sass, and MySQL to centralize records and streamline operations.
@@ -36,12 +36,12 @@ Full-stack software engineer and Computer Science graduate who designs, builds, 
 - Integrated front-end and back-end components for dynamic content rendering and a responsive user experience.
 
 ### Fashion Team Associate — Walmart, Kansas City, MO
-**August 2025 – Present**
+**August 2025 – June 2026**
 
 - Support merchandising, inventory organization, and customer service in a fast-paced, high-volume retail environment while pursuing software engineering roles.
 
 ### Supervisor — QuikMart
-**April 2023 – May 2025**
+**May 2022 – August 2025**
 
 - Supervised daily store operations and a team of associates — scheduling, task delegation, and floor coverage.
 - Managed customer service, cash handling, and inventory while enforcing store policies and loss-prevention standards.
