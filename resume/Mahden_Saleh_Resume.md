@@ -50,8 +50,8 @@ Full-stack software engineer and Computer Science graduate who designs, builds, 
 
 ## Projects
 
-### IDA — Adaptive Grade 4 Mathematics Software (Thesis)
-Full-stack adaptive learning platform teaching Order of Operations (PEMDAS): assesses each student's performance and uses content-based filtering to generate personalized learning paths. Designed in Figma; deployed as a live web app. *React (Vite), Sass, PHP, MySQL.*
+### IDA — Adaptive Grade 4 Mathematics Software (Thesis, Team Lead)
+Led the thesis team through design, development, and deployment of a full-stack adaptive learning platform teaching Order of Operations (PEMDAS): assesses each student's performance and uses content-based filtering to generate personalized learning paths. **Validated with 41 Grade 4 students at University of the East — Manila, achieving a 20% improvement in average test scores (Wilcoxon signed-rank, p < 0.05).** Designed in Figma; deployed as a live web app. *React (Vite), Sass, PHP, MySQL.*
 
 ### RecoLab — Content-Based Recommendation Engine · [code](https://github.com/smahden/portfolio/tree/main/projects/recolab)
 Recommendation engine written from scratch — TF-IDF vectorization, cosine similarity, user taste profiles, and ranking metrics (precision@k, MRR, NDCG) with no numpy or scikit-learn; browser demo recomputes the same similarity in JavaScript and matches the Python CLI exactly. 56 pytest tests. *Python, JavaScript.*
